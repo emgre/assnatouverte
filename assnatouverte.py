@@ -1,0 +1,42 @@
+# PYTHON_ARGCOMPLETE_OK
+
+from arghandler import ArgumentHandler, subcmd
+
+from crawling.crawler_service_factory import CrawlerServiceFactory
+from crawling.defaults import DEFAULT_DB_STR
+from database.database_service_factory import DatabaseServiceFactory
+
+
+@subcmd('crawl', help='Execute a crawler')
+def crawl(parser, context, args):
+    parser.add_argument('crawlers', metavar='crawler', type=str, nargs='+', help='crawlers to execute')
+    parser.add_argument('--print-sql', action='store_true', help='print SQL requests')
+    args = parser.parse_args(args)
+
+    crawler_service_factory = CrawlerServiceFactory().with_db_str(context.db)
+    if args.print_sql:
+        crawler_service_factory.echo_sql()
+    crawler_service = crawler_service_factory.build()
+
+    for crawler in args.crawlers:
+        crawler_service.execute_crawler(crawler)
+
+
+@subcmd('init_db', help='Create the database')
+def db(parser, context, args):
+    parser.add_argument('-x', '--overwrite', action='store_true', help='overwrite existing database')
+    args = parser.parse_args(args)
+
+    database_service = DatabaseServiceFactory().with_db_str(context.db).build()
+    database_service.init_db(args.overwrite)
+
+
+def main():
+    handler = ArgumentHandler(enable_autocompletion=True, use_subcommand_help=True)
+    handler.add_argument('-db', metavar='database', type=str, default=DEFAULT_DB_STR,
+                         help='database connection string (default: "%(default)s")')
+    handler.run()
+
+
+if __name__ == "__main__":
+    main()

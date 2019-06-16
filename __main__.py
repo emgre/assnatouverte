@@ -1,0 +1,3 @@
+import assnatouverte
+
+assnatouverte.main()
