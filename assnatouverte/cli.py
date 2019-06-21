@@ -2,9 +2,9 @@
 
 from arghandler import ArgumentHandler, subcmd
 
-from crawling.crawler_service_factory import CrawlerServiceFactory
-from crawling.defaults import DEFAULT_DB_STR
-from database.database_service_factory import DatabaseServiceFactory
+from assnatouverte.crawling.crawler_service_factory import CrawlerServiceFactory
+from assnatouverte.crawling.defaults import DEFAULT_DB_STR
+from assnatouverte.database.database_service_factory import DatabaseServiceFactory
 
 
 @subcmd('crawl', help='Execute a crawler')
@@ -23,7 +23,7 @@ def crawl(parser, context, args):
 
 
 @subcmd('init_db', help='Create the database')
-def db(parser, context, args):
+def init_db(parser, context, args):
     parser.add_argument('-x', '--overwrite', action='store_true', help='overwrite existing database')
     args = parser.parse_args(args)
 
@@ -32,7 +32,7 @@ def db(parser, context, args):
 
 
 def main():
-    handler = ArgumentHandler(enable_autocompletion=True, use_subcommand_help=True)
+    handler = ArgumentHandler(prog='assnatouverte', enable_autocompletion=True, use_subcommand_help=True)
     handler.add_argument('-db', metavar='database', type=str, default=DEFAULT_DB_STR,
                          help='database connection string (default: "%(default)s")')
     handler.run()

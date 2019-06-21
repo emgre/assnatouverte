@@ -1,6 +1,6 @@
-from crawling.defaults import DEFAULT_DB_STR
-from database.database import Database
-from database.database_service import DatabaseService
+from assnatouverte.crawling.defaults import DEFAULT_DB_STR
+from assnatouverte.database.database import Database
+from assnatouverte.database.database_service import DatabaseService
 
 
 class DatabaseServiceFactory:

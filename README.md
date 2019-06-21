@@ -34,13 +34,27 @@ ask the program to completely overwrite the database with the `-x` option. Examp
 To run a crawler, simply run `python -m assnatouverte crawl [...]` with a list of
 crawlers. The crawlers will be executed sequentially.
 
-# Unit tests
+# Quality
+
+For all the quality validation, be sure to install the develop dependencies with
+`pipenv install --dev`.
+
+## Unit tests
 
 To run the unit test, run `python -m unittest`.
 
-For coverage results, be sure to install the develop dependencies with
-`pipenv install --dev`, then run `coverage run -m unittest`. To get a report,
-run `coverage report`.
+## Coverage
+
+For coverage results, run `coverage run -m unittest`. To get a report, run
+`coverage report`.
+
+## Linting
+
+To run the linter ([pylint](https://www.pylint.org/)), run `pylint assnatouverte tests`.
+
+## Static typing
+
+To run the static type analyzer ([mypy](http://mypy-lang.org/)), run `mypy assnatouverte`.
 
 # License
 

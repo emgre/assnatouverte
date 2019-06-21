@@ -1,11 +1,11 @@
 from unittest import TestCase
 from unittest.mock import call, create_autospec
 
-from crawling.crawler import Crawler
-from crawling.crawler_repo import CrawlerRepository, CrawlerNotFoundException
-from crawling.crawler_service import CrawlerService
-from crawling.downloader.downloader import Downloader
-from database.database import Database
+from assnatouverte.crawling.crawler import Crawler
+from assnatouverte.crawling.crawler_repo import CrawlerRepository, CrawlerNotFoundException
+from assnatouverte.crawling.crawler_service import CrawlerService
+from assnatouverte.crawling.downloader.downloader import Downloader
+from assnatouverte.database.database import Database
 
 
 class TestCrawlerService(TestCase):
@@ -18,15 +18,23 @@ class TestCrawlerService(TestCase):
         self.crawler_service = CrawlerService(self.crawler_repo, self.downloader, self.database)
 
     def test_check_valid_crawlers_all_exists(self):
-        self.crawler_repo.get_crawler.side_effect = [create_autospec(Crawler), create_autospec(Crawler), create_autospec(Crawler)]
+        self.crawler_repo.get_crawler.side_effect = [
+            create_autospec(Crawler),
+            create_autospec(Crawler),
+            create_autospec(Crawler)
+        ]
 
         result = self.crawler_service.check_valid_crawlers(['asdf', 'qwer', 'zxcv'])
 
         self.assertTrue(result)
         self.crawler_repo.get_crawler.assert_has_calls([call('asdf'), call('qwer'), call('zxcv')])
 
-    def test_check_valid_crawlers_all_exists(self):
-        self.crawler_repo.get_crawler.side_effect = [create_autospec(Crawler), create_autospec(Crawler), CrawlerNotFoundException()]
+    def test_check_valid_crawlers_one_inexistent(self):
+        self.crawler_repo.get_crawler.side_effect = [
+            create_autospec(Crawler),
+            create_autospec(Crawler),
+            CrawlerNotFoundException()
+        ]
 
         result = self.crawler_service.check_valid_crawlers(['asdf', 'qwer', 'zxcv'])
 

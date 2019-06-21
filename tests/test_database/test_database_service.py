@@ -1,8 +1,8 @@
 from unittest import TestCase
 from unittest.mock import call, create_autospec
 
-from database.database import Database
-from database.database_service import DatabaseService
+from assnatouverte.database.database import Database
+from assnatouverte.database.database_service import DatabaseService
 
 
 class TestDatabaseService(TestCase):

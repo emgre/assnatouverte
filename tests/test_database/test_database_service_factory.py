@@ -1,15 +1,15 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from crawling.defaults import DEFAULT_DB_STR
-from database.database_service import DatabaseService
-from database.database_service_factory import DatabaseServiceFactory
+from assnatouverte.crawling.defaults import DEFAULT_DB_STR
+from assnatouverte.database.database_service import DatabaseService
+from assnatouverte.database.database_service_factory import DatabaseServiceFactory
 
 
 class TestDatabaseServiceFactory(TestCase):
 
     def setUp(self):
-        patcher = patch('database.database_service_factory.Database', autospec=True)
+        patcher = patch('assnatouverte.database.database_service_factory.Database', autospec=True)
         self.database = patcher.start()
         self.addCleanup(patcher.stop)
 

@@ -1,5 +1,6 @@
-from database.base import Base
 from sqlalchemy import Column, Integer, String
+
+from assnatouverte.database.base import Base
 
 
 class Member(Base):

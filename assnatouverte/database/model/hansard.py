@@ -1,7 +1,7 @@
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
-from database.base import Base
-from sqlalchemy import Column, Integer, String, ForeignKey
+from assnatouverte.database.base import Base
 
 
 class Hansard(Base):

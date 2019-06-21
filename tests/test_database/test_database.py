@@ -1,10 +1,10 @@
-from pathlib import Path
 from unittest import TestCase
 
-from database.database import Database
+from assnatouverte.database.database import Database
 
 
 class TestDatabase(TestCase):
+    # pylint: disable=protected-access
 
     def setUp(self):
         self.database = Database('sqlite://')

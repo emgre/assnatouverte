@@ -1,23 +1,23 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from crawling.crawler_service import CrawlerService
-from crawling.crawler_service_factory import CrawlerServiceFactory
-from crawling.defaults import DEFAULT_DB_STR
+from assnatouverte.crawling.crawler_service import CrawlerService
+from assnatouverte.crawling.crawler_service_factory import CrawlerServiceFactory
+from assnatouverte.crawling.defaults import DEFAULT_DB_STR
 
 
 class TestCrawlerServiceFactory(TestCase):
 
     def setUp(self):
-        patcher = patch('crawling.crawler_service_factory.CrawlerRepository', autospec=True)
+        patcher = patch('assnatouverte.crawling.crawler_service_factory.CrawlerRepository', autospec=True)
         self.crawler_repo = patcher.start()()
         self.addCleanup(patcher.stop)
 
-        patcher = patch('crawling.crawler_service_factory.HttpDownloader', autospec=True)
+        patcher = patch('assnatouverte.crawling.crawler_service_factory.HttpDownloader', autospec=True)
         self.downloader = patcher.start()
         self.addCleanup(patcher.stop)
 
-        patcher = patch('crawling.crawler_service_factory.Database', autospec=True)
+        patcher = patch('assnatouverte.crawling.crawler_service_factory.Database', autospec=True)
         self.database = patcher.start()
         self.addCleanup(patcher.stop)
 

@@ -1,8 +1,8 @@
-from crawling.crawler_repo import CrawlerRepository
-from crawling.crawler_service import CrawlerService
-from crawling.defaults import DEFAULT_DB_STR
-from crawling.downloader.http_downloader import HttpDownloader
-from database.database import Database
+from assnatouverte.crawling.crawler_repo import CrawlerRepository
+from assnatouverte.crawling.crawler_service import CrawlerService
+from assnatouverte.crawling.defaults import DEFAULT_DB_STR
+from assnatouverte.crawling.downloader.http_downloader import HttpDownloader
+from assnatouverte.database.database import Database
 
 
 class CrawlerServiceFactory:

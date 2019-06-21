@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker, Session
 
-from database.base import Base
+from assnatouverte.database.base import Base
 
 
 class Database:

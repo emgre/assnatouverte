@@ -1,4 +1,4 @@
-from database.database import Database
+from assnatouverte.database.database import Database
 
 
 class DatabaseService:

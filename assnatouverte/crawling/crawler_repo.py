@@ -2,8 +2,9 @@ import inspect
 import importlib.util
 from pathlib import Path
 import pkgutil
+from typing import List
 
-from crawling.crawler import Crawler
+from assnatouverte.crawling.crawler import Crawler
 
 
 class CrawlerNotFoundException(Exception):
@@ -20,10 +21,10 @@ class CrawlerRepository:
         self._crawlers = {}
 
     def add_crawler(self, crawler: Crawler) -> None:
-        if crawler.name in self._crawlers:
+        if crawler.get_name() in self._crawlers:
             raise CrawlerWithSameIdAlreadyExistsException
 
-        self._crawlers[crawler.name] = crawler
+        self._crawlers[crawler.get_name()] = crawler
 
     def get_crawler(self, crawler_name: str) -> Crawler:
         crawler = self._crawlers.get(crawler_name)
@@ -32,7 +33,7 @@ class CrawlerRepository:
 
         return crawler
 
-    def get_all_crawlers(self) -> [Crawler]:
+    def get_all_crawlers(self) -> List[Crawler]:
         return list(self._crawlers.values())
 
     def discover_crawlers(self, path: Path = Path(__file__).parent / 'crawlers') -> None:
@@ -41,6 +42,6 @@ class CrawlerRepository:
                 spec = loader.find_spec(module_name)
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
-                for class_name, obj in inspect.getmembers(module, inspect.isclass):
+                for _, obj in inspect.getmembers(module, inspect.isclass):
                     if obj.__module__ == module_name and issubclass(obj, Crawler):
                         self.add_crawler(obj())

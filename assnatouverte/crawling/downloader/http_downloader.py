@@ -1,5 +1,5 @@
 import requests
-from crawling.downloader.downloader import Downloader
+from assnatouverte.crawling.downloader.downloader import Downloader
 
 
 class HttpDownloader(Downloader):

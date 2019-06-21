@@ -1,6 +1,8 @@
-from crawling.crawler_repo import CrawlerRepository, CrawlerNotFoundException
-from crawling.downloader.downloader import Downloader
-from database.database import Database
+from typing import Iterable
+
+from assnatouverte.crawling.crawler_repo import CrawlerRepository, CrawlerNotFoundException
+from assnatouverte.crawling.downloader.downloader import Downloader
+from assnatouverte.database.database import Database
 
 
 class CrawlerService:
@@ -10,7 +12,7 @@ class CrawlerService:
         self._downloader = downloader
         self._database = database
 
-    def check_valid_crawlers(self, crawler_names: [str]):
+    def check_valid_crawlers(self, crawler_names: Iterable[str]):
         for name in crawler_names:
             try:
                 self._crawler_repo.get_crawler(name)
