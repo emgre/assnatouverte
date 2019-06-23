@@ -1,3 +1,8 @@
+[![assnatouverte](./website/logo.svg)](https://assnatouverte.ca/)
+
+[![CircleCI](https://circleci.com/gh/emgre/assnatouverte.svg?style=svg)](https://circleci.com/gh/emgre/assnatouverte)
+[![codecov](https://codecov.io/gh/emgre/assnatouverte/branch/master/graph/badge.svg)](https://codecov.io/gh/emgre/assnatouverte)
+
 # Installation
 
 You'll need:

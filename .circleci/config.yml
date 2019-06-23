@@ -1,0 +1,53 @@
+version: 2
+jobs:
+  python-check:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install
+          command: 'pipenv install --dev'
+      - save_cache:
+          key: dependency-cache-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local/share/virtualenvs
+      - run:
+          name: Unit Tests
+          command: 'pipenv run coverage run -m unittest'
+      - run:
+          name: Coverage
+          command: 'pipenv run coverage xml && bash <(curl -s https://codecov.io/bash)'
+      - run:
+          name: Linting
+          command: 'pipenv run pylint assnatouverte tests'
+      - run:
+          name: Static type analysis
+          command: 'pipenv run mypy assnatouverte'
+  website-deploy:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "17:df:f6:35:b0:93:00:09:98:e0:a2:a5:1c:cf:08:14"
+      - checkout
+      - run:
+          name: Install
+          command: 'sudo pip install ghp-import'
+      - run:
+          name: Deploy
+          command: 'ghp-import -p website'
+workflows:
+  version: 2
+  check-and-deploy:
+    jobs:
+      - python-check
+      - website-deploy:
+          requires:
+            - python-check
+          filters:
+            branches:
+              only: master
