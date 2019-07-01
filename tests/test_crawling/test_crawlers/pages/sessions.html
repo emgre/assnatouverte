@@ -1,0 +1,2503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"><head>
+
+	<!-- Enonces d'inclusion de fichiers JS et CSS -->
+	
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="content-language" content="fr">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/ResetCSS.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/AssNat.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Reguliere.css" title="Reguliere" rel="alternate stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Moyenne.css" title="Moyenne" rel="alternate stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Grande.css" title="Grande" rel="alternate stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/infoBulle.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jScrollPane.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_002.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_003.css" rel="stylesheet" media="screen">
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Calendrier.css" rel="stylesheet" media="screen">
+<link href="http://www.assnat.qc.ca/Images/favicon.ico" rel="shortcut icon">
+
+<!-- Feuilles de styles specifiques IE -->
+
+<!--[if lte IE 6]>
+    <link type="text/css" href="/styles/CorrectionsIE6.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+
+<!--[if IE 7]>
+    <link type="text/css" href="/styles/CorrectionsIE7.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+
+<!--[if IE 8]>
+    <link type="text/css" href="/styles/CorrectionsIE8.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Impression.css" rel="stylesheet" media="print">
+
+<link type="text/css" href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Tableau.css" rel="stylesheet" media="screen">
+
+<script type="text/javascript" defer="defer" async="" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/piwik.js"></script><script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_008.js"></script>
+
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery-ui.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+// Libellé du calendrier
+$.dpText = {
+	TEXT_PREV_YEAR		:	'Année précédente',
+	TEXT_PREV_MONTH		:	'Mois précédent',
+	TEXT_NEXT_YEAR		:	'Année suivante',
+	TEXT_NEXT_MONTH		:	'Mois suivant',
+	TEXT_CLOSE			:	'[x] Fermer',
+	TEXT_CHOOSE_DATE	:	'Choisir une date'
+}
+
+var _contenuLoading = '<img style="width: 16px;height: 16px;" src="/Images/lightbox/loading.gif" />&nbsp; Chargement en cours...';
+
+var _nbAnneeArchiveActivite = '3';
+// Voir Calendrier.js pour _dtSetStartDate
+var _dtSetEndDate = '2019-09-24';
+var intNombreAnneeArchiveActivite = 3;
+var langueCourante = 'fr';
+
+_initCalendrierTypeActiviteJSON = eval([{"NomTypeActivite":"Autres activités","Categorie":"D","Name":null,"Description":null},{"NomTypeActivite":"Conférences et points de presse","Categorie":"C","Name":null,"Description":null},{"NomTypeActivite":"Séances de l'Assemblée","Categorie":"A","Name":null,"Description":null},{"NomTypeActivite":"Séances des commissions","Categorie":"B","Name":null,"Description":null}]);name 
+_urlGetCalendrierDataJSON = '/WebMethod/Calendrier.aspx/GetCalendrier?langue=fr';
+_documentURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=Thumbnail&token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&MediaId=";
+_imageThumbnailURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=AlbumThumbnail&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_imageOriginaleURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_imageThumbnailDrapeauURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=ThumbnailDrapeau&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_lienContenuURL = "/fr/deputes/index";
+_extensionPagesDuSite = "html";
+_lienPatronUrlCommuniquePresse = '/fr/actualites-salle-presse/communiques/';
+_lienPatronUrlTranscription = '/fr/actualites-salle-presse/conferences-points-presse/';
+_lienPatronUrlEnDirect = '/fr/video-audio/index';
+_lienJournalDebat ='/fr/travaux-parlementaires/{0}.html';
+_lienJournalDebatCom ='/fr/travaux-parlementaires/commissions/{0}/journal-debats/index';
+_lienJournalDebatChmbr ='/fr/travaux-parlementaires/{0}';
+_listeObjetMetierPatronUrl = "DocumentGenerique:/fr/document/{0}.html|Commission:/fr/travaux-parlementaires/commissions/{0}/index.html|Mandat:/fr/travaux-parlementaires/mandats/{0}/index.html|Lien:/fr/lien/{0}.html|CommuniquePresse:/fr/actualites-salle-presse/communiques/{0}.html|Actualite:/fr/actualites-salle-presse/nouvelle/{0}.html|ConferencePointPresse:/fr/actualites-salle-presse/conferences-points-presse/{0}.html|Consultation:/fr/travaux-parlementaires/consultations/{0}.html|SeanceAssemblee:/fr/travaux-parlementaires/assemblee-nationale/{0}/index.html|ProjetLoi:/fr/travaux-parlementaires/projets-loi/projet-loi-{0}.html|VideoAudio:/fr/video-audio/{0}.html|Journal:/fr/travaux-parlementaires/{0}.html|SyndicationRSS:/fr/rss/{0}.html|Petition:/fr/exprimez-votre-opinion/petition/{0}/index.html|TermeEncyclopedique:/fr/patrimoine/lexique/{0}.html|Depute:/fr/deputes/{0}/index.html|Texte:/fr/{0}.html|Individu:/fr/patrimoine/anciens-parlementaires/{0}.html|";
+_lienAideSoutienTechnique = '/fr/aide/aide-recherche.html#javascript';
+
+var _urlGetCalendrierObtenirActiviteEnOndes = '/WebMethod/Calendrier.aspx/ObtenirActiviteEnOndes';
+var intervalleRafraichissementWebDiffusion = '60';
+var urlPageVideoAudio = '/fr/video-audio/index.html?activite={0}';
+var libelleDateDebutDu = 'Du';
+var libelleDateDebutVers = 'Vers';
+var libelleDateFinJusqua = 'jusqu\'à';
+var libelleDateFinAu = 'au';
+var libelleHeureFinA = 'à'
+var libelleDebutApresPeriodeCourante = 'début : après la période des affaires courantes de l\'Assemblée';
+var bulleAidePeriodeAffaireCourante = '<span class="btnInfoBulle sansControle"><a href="javascript:void(0)" class="sanssouligne"><img src="http://www.assnat.qc.ca/Images/btnInfoBulle.gif" title="Afficher l\'aide" alt="Afficher l\'aide"></a><span title="Début : après la période des affaires courantes de l\'Assemblée"></span></span>';
+var libelleActiviteReporteeDateUlterieure = 'Activité reportée à une date ultérieure';
+
+var libelleCalAPartirDe = 'À partir de';
+var libelleCalEnCours = 'En cours';
+var libelleCalDebut = 'Début';
+
+var libelleDuree = 'Durée :';
+
+    var libelleAucunVideo = "La recherche n’a donné aucun résultat.";
+    var libelleAucuneAutreActiviteEnDirect = "Aucune autre activité en direct."
+
+var libelleNombreResultat = 'Nombre de résultats&nbsp;';
+var libelleMotsCles = 'Mots clés';
+var libelleCategorie = 'Catégorie';
+var libelleSession = 'Session';
+var libelleDateOuPeriode = 'Date ou période&nbsp;: ';
+var libelleAPartirDu = 'À partir du';
+var libelleJusquAu = "Jusqu'au";
+
+
+
+var arrCalendrierLblGeneral = {
+                                "lblCalOuvrir": "Ouvrir",
+                                "lblCalFermerEntete": "Fermer"       
+                            };
+var arrCalLblJoursSemaine = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'lblFormDeputesSortants'];
+var arrCalLblMoisAnnee = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+var arrCalLblMoisAnneeAbr = ['JA', 'FE', 'MR', 'AR', 'MA', 'JN', 'JL', 'AU', 'SE', 'OC', 'NO', 'DE'];
+var lblCalAucuneActivite = "Aucune activité au calendrier aujourd'hui.";
+var lblCalDifficulteTechnique = "Le calendrier n'est pas accessible en ce moment. Veuillez réessayer dans quelques minutes.";
+var lblCalActPrivee = "Activité privée"; 
+var lblCalActSurInvitation = "Sur invitation";
+var lblCalActAnnulee = "Activité annulée"; 
+var lblCalEnDirect = "En direct";
+var lblCalTranscription = "Transcription";
+var lblCalCommunique = "Communiqué";
+var lblCalToutesActivites = "Toutes les activités";
+var lblCalVideo = "Vidéo";
+var lblCalAudio = "Audio";
+
+// Libellés du date picker
+
+    Date.dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'lblFormDeputesSortants'];
+    Date.abbrDayNames = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
+    Date.monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    Date.abbrMonthNames = ['JA', 'FE', 'MR', 'AR', 'MA', 'JN', 'JL', 'AU', 'SE', 'OC', 'NO', 'DE'];
+	Date.firstDayOfWeek = 7;
+
+
+// Libellés pour treeview - overrider dans les pages au besoin
+var lblOuvrirTout = 'Afficher tout le contenu';
+var lblFermerTout = 'Masquer tout le contenu';
+
+// Libelles pour paginateur
+var _lblPaginationPage = 'Page';
+var _lblPaginationDe = 'de';
+
+// URL drapeau generique 
+var _urlDrapeauGenerique = '/Images/Temp/icoDrapeaux.gif'
+
+// Message pour sites externes
+var _messageSiteExterne = "L'Assemblée n'assume aucune responsabilité quant au contenu des sites externes.";
+var _arrDomainesInternes = ['172.16.48.120','172.16.48.199','localhost','app1dev.assnat.intranet','wwwdev.assnat.qc.ca','wwwdev2.assnat.qc.ca','wwwfon.assnat.qc.ca','wwwfon2.assnat.qc.ca','wwwfor.assnat.qc.ca','wwwacc.assnat.qc.ca','wwwacc2.assnat.qc.ca','www.assnat.qc.ca','www2.assnat.qc.ca','assnat.qc.ca','WWW.bibliotheque.assnat.qc.ca','fondationbonenfant.qc.ca','sd10sri10v','www.parlementsauprimaire.com','www.paricilademocratie.com','boutique.assnat.qc.ca'];
+
+// Pour visionneuse: libelle 'Image' utilise dans slimbox2.js
+var lblVisionneuseTermeImage = "Image {x} de {y}"; 
+
+// Libelle pour le bouton Fermer de la visionneuse
+var libelleCloseLink = "Fermer";
+
+// Libellés pour fermer les bulles d'aide
+var lblBulleAideFermer = "[x] Fermer";
+
+// URL pour la page de redirection javascript
+var urlPageRedirectionJS = '/fr/redirection.html?d=';
+
+var urlBoutonCalendrier = '/Images/btnCalendrier.gif';
+
+
+var urlObtenirVisionneusePhotos = '/Gabarits/InfrastructuresAvecVisionneuse.aspx/ObtenirVisionneusePhotos';
+var lblAlbumPhotos = 'Album de photos';
+var lblAgrandir = 'Agrandir';
+
+// Le script d'effet ne fonctionne pas sous Internet Explorer, ce script distingue ie des autres fureteurs 
+ if ($.browser.msie) {
+    }
+    else {
+        document.write("<script type='text\/javascript' src='\/scripts/jquery.easing.min.js?version=1.3'><\/script>")
+    }
+//]]>
+ 
+    var valEtatDeputeAncienDeputes = "AncienDeputes";
+
+    var urlObtenirTypeTravauxParSessionLegislature = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeTravauxParSessionLegislature';
+    var urlObtenirTypeTravauxParPeriode = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeTravauxParPeriode';
+    var urlObtenirTypeDocumentParTypeTravaux = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeDocumentParTypeTravaux';
+    var urlObtenirSousCategorieVideoParCategorieVideo = '/Gabarits/RechercheAvancee.aspx/ObtenirSousCategorieVideoParCategorieVideo';
+    
+    var idsSectionRechercheTravauxParlementaires = ['9',
+                                                        '27',
+                                                        '29',
+                                                        '31',
+                                                        '33'];
+
+    var idCategorieDocumentJournauxDebats = '13'
+
+    var msgFormatDateInvalide = "Veuillez saisir une date valide selon le format aaaa-mm-jj.";
+    var msgPeriodeInvalide = "La date de début doit précéder la date de fin.";
+    var msgPeriodeDebutFutur = "La date doit être antérieure ou égale à la date du jour.";
+
+</script><script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery.js"></script>
+
+<!-- Gestion des cookies. Documentation : http://stilbuero.de/jquery/cookie/ -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_012.js"></script>
+
+<!-- Corrige les problème de z-index d'Internet Explorer. Doc: http://brandonaaron.net/jquery/plugins/bgiframe/docs/ -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_005.js"></script>
+
+<!-- Permet la gestion de l'objet date. -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/date.js"></script>
+
+<!-- Génère des paneaux (Tabs) à partir d'une liste (ul li). info et doc: http://docs.jquery.com/UI/Tabs-->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/ui.js"></script>
+
+<!-- Génère l'affichage dynamique d'un liste (ul li). info et doc: http://bassistance.de/jquery-plugins/jquery-plugin-treeview/ -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_003.js"></script>
+
+<!-- Permet de modifier la feuille de style. info et doc:http://kelvinluck.com/article/switch-stylesheets-with-jquery -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/StyleSwitcher.js"></script>
+
+<!-- Permet de modifier l'apparence des selects. info et doc:http://www.lotsofcode.com/javascript-and-ajax/jquery-select-box-skin.htm -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_006.js"></script>
+
+<!-- Permet de créer des masques sur les formulaires info et doc:http://digitalbush.com/projects/masked-input-plugin/ -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_010.js"></script>
+
+<!-- Permet de générer un calendrier. docs et info : http://kelvinluck.com/assets/jquery/datePicker/v2/demo/datePickerLocalised.html -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_011.js"></script>
+
+<!-- Permet de gérer les bulles d'aide en popup -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/BulleAide.js"></script>
+
+<!-- Permet de modifier l'apparence des scrollbars. info et doc: http://www.kelvinluck.com/assets/jquery/jScrollPane/jScrollPane.html -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jScrollPane.js"></script>
+
+<!-- Permet d'utiliser des PNG transparent dans IE 6 et 5.5. info et doc: http://jquery.andreaseberhard.de/pngFix/ -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_002.js"></script>
+
+<!-- Permet de trier et de paginer des tableaux. docs et info : http://tablesorter.com -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_009.js"></script>
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_004.js"></script>
+
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/jquery_007.js"></script>
+
+<!-- script general -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/AssNat.js"></script>
+
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/moment.js"></script>
+
+<!-- evenements et gestion du calendrier -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/Calendrier.js"></script>
+
+<!-- sert uniquement pour débugger les objets JSON. -->
+<script type="text/javascript" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/json.js"></script>
+
+
+
+
+
+	
+	<!-- Placeholder: permet d'ajouter des enonces specifiques dans le HEAD -->
+    
+	<script type="text/javascript">
+	// Liens sans href doivent etre de couleur texte
+	$(document).ready
+	(
+		function() 
+		{	
+			$("div.FilAriane a[href='']").addClass("couleurTexteBase");
+		}
+	);
+	
+	</script>
+	
+	<link href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/SectionF98.css" rel="stylesheet" type="text/css" media="screen">			
+	
+
+
+	<!-- Feuille de style pour le layout de la page -->
+	<link href="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/GabPleineLargeur.css" rel="stylesheet" type="text/css" media="screen">
+
+	<!-- Placeholder: remplace automatiquement selon rubrique -->
+    <title>
+	
+		    Les législatures et leurs sessions depuis 1867 - Assemblée nationale du Québec
+		
+</title>
+        
+        <meta property="og:title" content="Les législatures et leurs sessions depuis 1867 - Assemblée nationale du Québec">
+        <meta property="og:description" content="">
+        <meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19205">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19207">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19209">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19211">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19213">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19215">
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19217">
+
+    </head>
+
+<!-- Placeholder: permet de specifier un tag body personnalise (default: <body>) -->
+
+	<body class="sectionStatique sectionStatiqueHistoire">
+
+
+    <form method="post" action="/fr/patrimoine/datesessions.html" id="aspnetForm">
+<div style="display: none;">
+<input type="hidden" name="versionProgrammationEnCache" id="versionProgrammationEnCache" value="0">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTc1MjkxMzc3MQ9kFgJmD2QWAgIDEGRkFgICAQ9kFgQCAQ9kFgJmD2QWAmYPFQIgL2VuL3BhdHJpbW9pbmUvZGF0ZXNlc3Npb25zLmh0bWwHRW5nbGlzaGQCBA8WAh4EaHJlZgUnL2ZyL2FpZGUvYWlkZS1yZWNoZXJjaGUuaHRtbCNqYXZhc2NyaXB0ZGTmS/GKcAKDn0xr5LIgATJJphmosg==">
+</div>
+
+<div style="display: none;">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C6FA15DB">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAMdSiJD6afQm1bdzKt34yQX3hH/puXvwl4FGZa6rYP8j7zfnYlPDIamE8E+dcJv2yMW16onjBRaQGlWZD8pcuZNAp6vXw==">
+</div>
+		<div id="Wrap">
+	    
+			<!-- Utilitaires: impression, agrandir texte, recherche, etc -->
+			
+
+
+<script type="text/javascript">
+    var motCleDefaut = 'Rechercher';
+</script>
+
+<a name="haut"></a>
+<div id="enteteUtilitaire">
+    <div id="skip" class="skiplinks">
+        <a href="#ancreContenuPrincipal">Atteindre le contenu</a>
+        <a href="#ancreSousNavigation">Atteindre la navigation secondaire</a>               
+    </div>
+    <div class="listeUtilitaires listeUtilitaires2">
+        <ul>
+            <li class="Premier">
+                <a class="sanssouligne nePasRediriger icoMobile" href="http://m.assnat.qc.ca/">
+                    <span class="styleHyperlien">Mobile</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.assnat.qc.ca/fr/accueil/mediassociaux.html" class="sanssouligne icoMediasSociauxEntete">
+                    <span class="styleHyperlien">Suivez-nous</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="listeUtilitaires">
+        <ul>
+            
+            <li><a href="http://www.assnat.qc.ca/en/patrimoine/datesessions.html">English</a></li>
+            
+            <li><a href="http://www.assnat.qc.ca/fr/nous-joindre.html" id="ctl00_Utilitaires_A1">Nous joindre</a></li>
+            <li>
+                <div class="outilRecherche">
+                    <label for="ctl00_Utilitaires_motCle" class="nepasafficher">Saisir un mot clé pour faire une recherche générale</label>
+                    <input type="text" id="ctl00_Utilitaires_motCle" class="outilRechercheMotCle">
+                    <input onclick="RechercherMotCle();return false;" type="image" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/btnRecherche_of.gif" class="btnRechercheGlobal" title="Rechercher" alt="Rechercher">
+                </div>
+            </li>
+            <li>
+                <a href="http://www.assnat.qc.ca/fr/aide/aide-recherche.html#javascript" onclick="LancerRechercheAvancee();return false;">Recherche avancée</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    function RechercherMotCle() {
+        var mot = $('#ctl00_Utilitaires_motCle');
+        if (mot.val() != "")
+        {
+            window.location = '/fr/recherche/recherche-avancee.html?SectionRecherche=-1&MotsCles=' + encodeURIComponent(htmlEscape(mot.val()));
+        }
+    }
+
+    function LancerRechercheAvancee() {
+        var urlRechercheAvancee = '/fr/recherche/recherche-avancee.html';
+        window.location = urlRechercheAvancee + "?EstNouvelleRecherche=true";
+    }
+
+
+    $(document).ready(
+
+		function() {
+		    // Masquer le bouton Envoyer a un ami dans certaines pages
+
+		    var Recherche = '';
+		    var EnvoyerAmi = '';
+
+		    if (Recherche + EnvoyerAmi != '')
+		        $("#EnvoyerAmi").addClass("cacherUnElement");
+		}
+	);				
+		
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	        
+			<!-- Banniere: image d'entete -->
+			
+<div id="Banniere">
+    <h1>Assemblée nationale du Québec - Retour à l'accueil</h1>
+	<a href="http://www.assnat.qc.ca/fr/index.html" class="sanssouligne" title="Assemblée nationale du Québec - Retour à l'accueil">
+    <img class="nepasafficher" title="Assemblée nationale du Québec - Retour à l'accueil" alt="Assemblée nationale du Québec - Retour à l'accueil" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/transparent.gif" width="88" height="58"></a>
+</div>
+        
+	        
+			<!-- NavigationPrincipale: menu horizontal -->
+			
+
+<div id="NavigationPrincipaleConteneur">
+    <div id="NavPrincipaleNiveau1">
+        <ul>
+            <li class="btnAccueil">
+                <a href="http://www.assnat.qc.ca/fr/index.html" id="ctl00_NavigationPrincipale_hrfAcceuil">
+                    Accueil</a></li>
+            <li class="menuHoverParent btnDeputes"><a href="http://www.assnat.qc.ca/fr/deputes/index.html" id="ctl00_NavigationPrincipale_hrfDeputes">
+                Députés</a>
+                <div class="menuHoverEnfant">
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10006.html">Le président</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10002.html#listeDeputes">Liste des députés en fonction </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11861.html">Les députés depuis 1764</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10002.html#listeDeputes">Coordonnées des députés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10042.html">La fonction de député</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10014.html">Fonctions parlementaires des députés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10020.html">Composition des commissions</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10028.html">Membres du Bureau de l'Assemblée</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10052.html">Indemnités et allocations</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/deputes/cerclefemmes/index.html">Cercle des femmes parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12661.html">Cercle des jeunes parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10965.html">Amicale des anciens parlementaires du Québec</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12603.html">Fondation Jean-Charles-Bonenfant </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12605.html">Fondation des parlementaires québécois Cultures à partager </a></li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class="menuHoverParent btnTravaux">
+                <a href="http://www.assnat.qc.ca/fr/travaux-parlementaires/index.html" id="ctl00_NavigationPrincipale_hrfTravauxParlementaires">
+                    Travaux parlementaires</a>
+                <div class="menuHoverEnfant">
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12119.html">Calendrier hebdomadaire des travaux</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12213.html">Journal des débats</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11867.html">Index du Journal des débats</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10114.html#procedure">Règlement et autres règles de procédure de l'Assemblée nationale</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10114.html#procedure">Propos non parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10044.html">Assister aux travaux</a></li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10118.html">Travaux de l'Assemblée</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10118.html">Toutes les séances</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10198.html">Documents déposés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10192.html">Projets de loi</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12215.html">Cheminement des projets de loi</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Travaux des commissions</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Liste des commissions</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11185.html">Mandats en cours</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10198.html">Documents déposés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10140.html">Rapports et documents de réflexion</a></li>
+</ul>
+</li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class="menuHoverParent btnExprimez">
+                <a href="http://www.assnat.qc.ca/fr/exprimez-votre-opinion/index.html" id="ctl00_NavigationPrincipale_hrfExprimezVotreOpinion">
+                    Exprimez votre opinion&nbsp;!</a>
+                <div class="menuHoverEnfant" style="display: none;">
+                    
+                            <ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10999.html">Pétitions</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11001.html">Signer une pétition électronique</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11003.html">Consulter une pétition présentée à l'Assemblée</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10108.html">Lancer une pétition</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/exprimez-votre-opinion/petition/cheminement-petition">Cheminement d'une pétition</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10901.html">Consultations publiques</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10901.html#CommentParticiper">Comment participer à une consultation</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Liste des consultations publiques</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10995.html">Participer à une consultation en ligne</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10997.html">Commenter un sujet à l'étude</a></strong></li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10110.html">Présenter un projet de loi d'intérêt privé</a></strong></li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class="menuHoverParent btnVideoAudio">
+                <a href="http://www.assnat.qc.ca/fr/video-audio/index.html" id="ctl00_NavigationPrincipale_hrfVideoAudio">
+                    Vidéo</a>
+                <div class="menuHoverEnfant">
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12541.html"><strong>En direct et webdiffusions à venir</strong></a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12543.html"><strong>Archives des travaux et activités parlementaires</strong></a> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12545.html">Travaux de l'Assemblée </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12559.html">Travaux des commissions</a> </li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12547.html">Activités de presse </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12549.html">Activités spéciales et institutionnelles</a> </li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12551.html">Députés </a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12553.html"><strong>Le Canal de l'Assemblée</strong></a> </li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12555.html"><strong>Émissions et capsules promotionnelles</strong></a></li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12561.html"><strong>Espace jeunesse</strong></a> </li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11183.html"><strong>Commander un extrait</strong></a> </li>
+</ul>
+                        
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+	        
+            <!-- PlaceHolder: permet de masquer le calendrier sommaire (defaut: s'affiche) -->
+			
+				
+
+<script type="text/javascript">
+</script>
+
+<div class="calendrier calSommaire" id="Calendrier">
+    <div class="titreCalendrier" id="TitreCalendrier">
+        <ul>
+            <li class="btnCalendrier" id="btnCalendrier">
+                <a href="javascript:void(0)" id="ctl00_CalendrierSommaire_CalendrierSommaire1_LienCalendrier">
+                    Calendrier
+                    <p class="libelleOuvrirFermer">
+                    Ouvrir</p></a>
+            </li>
+        </ul>
+    </div>
+    <div class="contenuCalendrier" id="ContenuCalendrier">
+        <div class="contenuCalendrierInterne" style="">
+            <div class="overlayCalendrier">
+                <p class="contenuOverlay">
+                    <img src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/loading.gif" alt="Chargement en cours" title="Chargement en cours">
+                </p>
+            </div>
+            <div class="blocAssembleeEnDirect">
+                <ul class="listeIconesHorizontale">
+                    <li id="IconeEnDirectCalendrier" class="icoEnDirectInactif"><span id="spnEnDirectCalendrier" class="couleurTexteNormal">
+                        En direct</span></li>
+                    <li><a class="anchorCalendrierDetaille" href="http://www.assnat.qc.ca/fr/calendrier-detaille.html">
+                        Calendrier détaillé</a></li>
+                </ul>
+            </div>
+            <div class="blocNavigateurDates">
+                <div>
+                    <p id="ConteneurCalendrierPopup">
+                        <span class="calendrierPopup dp-applied"></span><a href="#" class="sanssouligne dp-choose-date cacherPourImpression"><img alt="Choisir une date" title="Choisir une date" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/btnCalendrier.gif">Choisir une date</a>
+                    </p>
+                    <h2 id="TitreDateDuJour">_date_du_jour
+                    </h2>
+                </div>
+                <ul>
+                    <li class="versGauche"><a href="#" class="dateNavigateur fleche" id="dateNavGauche"><img alt="Semaine précédente" title="Semaine précédente" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/transparent_002.gif" width="15" height="25"></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavDi" title="_dimanche" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">DIM</span><br>
+                        <span class="libelleDate">6</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavLu" title="_lundi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">LUN</span><br>
+                        <span class="libelleDate">7</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavMa" title="_mardi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">MAR</span><br>
+                        <span class="libelleDate">8</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavMe" title="_mercredi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">MER</span><br>
+                        <span class="libelleDate">9</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavJe" title="_jeudi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">JEU</span><br>
+                        <span class="libelleDate">10</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavVe" title="_vendredi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">VEN</span><br>
+                        <span class="libelleDate">11</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavSa" title="_samedi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">SAM</span><br>
+                        <span class="libelleDate">12</span></a></li>
+                        
+                    <li class="versDroite"><a href="#" class="dateNavigateur fleche" id="dateNavDroite">
+                        <img alt="Semaine suivante" title="Semaine suivante" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/transparent_002.gif" width="15" height="25"></a></li>
+                </ul>
+                <span class="aujourdhui"><a class="aujourdhuiLien" href="">
+                    Aujourd'hui</a></span>
+            </div>
+            <hr>
+            <div class="blocEnCours" style="display: none">
+                <div class="blocEnCoursTitre">
+                    <h3 id="HeureEnCours" class="heure">_heure_en_cours
+                    </h3>
+                    <h3>
+                        En cours</h3>
+                </div>
+                <div class="boiteDefilante">
+                </div>
+            </div>
+            <div class="blocActivitesDuJour">
+                <h3><label for="ctl00_CalendrierSommaire_CalendrierSommaire1_selectFiltreCategorieActivite">Activités du jour</label></h3>
+                <div class="skinned-select">
+                    <div class="select-text">Toutes les activités</div><select name="ctl00$CalendrierSommaire$CalendrierSommaire1$selectFiltreCategorieActivite" id="ctl00_CalendrierSommaire_CalendrierSommaire1_selectFiltreCategorieActivite" class="selectFiltreCategorieActivite"><option value="*" selected="selected">Toutes les activités</option><option value="catD">Autres activités</option><option value="catC">Conférences et points de presse</option><option value="catA">Séances de l'Assemblée</option><option value="catB">Séances des commissions</option></select>
+                </div>
+                <div class="boiteDefilante">
+                </div>
+            </div>
+            <div class="blocExpositions" style="display: none">
+                <h3>
+                    Exposition(s)</h3>
+                <div id="listeExpositions">
+                </div>
+            </div>
+            <div class="blocSurLesTours" id="BlocSurLesTours" style="display: none">
+                <h3>
+                    Drapeau(x) sur l'hôtel du Parlement</h3>
+                <div id="listeDrapeaux">
+                </div>
+            </div>
+        </div>
+        <p id="calendrierNoJs" style="display: none;">
+            L'utilisation du calendrier requiert que Javascript soit activé dans votre navigateur.<br>
+            <a href="http://www.assnat.qc.ca/fr/aide/aide-recherche.html#javascript">
+                Pour plus de renseignements</a>
+        </p>
+    </div>
+</div>
+
+			
+
+            <!-- NavigationPrincipaleNiveau2: menu horizontal -->
+			
+
+<div id="NavigationPrincipaleNiveau2Conteneur">
+    <div id="NavPrincipaleNiveau2">
+        <ul>
+            <li class="" id="lienABC"><a href="http://www.assnat.qc.ca/fr/abc-assemblee/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfABCDeLassemblee">
+                L'ABC de l'Assemblée</a></li>
+            <li class="" id="lienVisiteurs"><a href="http://www.assnat.qc.ca/fr/visiteurs/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfVisiteurs">
+                Visiteurs</a></li>
+            <li class="" id="lienActualites"><a href="http://www.assnat.qc.ca/fr/actualites-salle-presse/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfActualiteEtSalleDePresse">
+                Actualités et salle de presse</a></li>
+            <li class="" id="lienBibliotheque">
+                <a href="http://www.assnat.qc.ca/fr/bibliotheque/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfBibliotheque">
+                    Bibliothèque</a></li>
+            <li class="" id="lienPublications">
+                <a href="http://www.assnat.qc.ca/fr/publications/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfPublications">
+                    Publications</a></li>
+            <li class="" id="lienEducatives">
+                <a href="http://www.paricilademocratie.com/" id="ctl00_NavigationPrincipaleNiveau2_hrfActivitesEducatives">
+                    Éducation</a></li>
+            <li class="" id="lienInternational">
+                <a href="http://www.assnat.qc.ca/fr/associations/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfInternational">
+                    Diplomatie</a></li>
+            <li class="menuActif" id="lienHistoire"><a href="http://www.assnat.qc.ca/fr/patrimoine/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfHistoire">
+                Histoire</a></li>
+            <li class="" id="lienAmeliorationsInfrastructures"><a href="http://www.assnat.qc.ca/fr/pavillon/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfAmeliorationsInfrastructures">
+                Nouveau pavillon d'accueil</a></li>
+        </ul>
+    </div>
+</div>
+
+
+			<!-- FilAriane: affiche le fil d'ariane -->			
+			
+				
+<div id="FilAriane" class="FilAriane">
+<span id="ctl00_FilAriane_FilAriane1_SiteMapPath1"><span><a href="http://www.assnat.qc.ca/fr/index.html">Accueil</a></span><span> &gt; </span><span><a href="http://www.assnat.qc.ca/fr/patrimoine/index.html">Histoire</a></span><span> &gt; </span><span>Les législatures et leurs sessions depuis 1867</span></span>
+</div>
+			
+	        
+            
+            
+
+            <!-- Ancre pour le "skiplink atteindreSousNavigation" -->
+            <div id="divAncreSousNavigation" class="skipLinks">
+                <a name="ancreSousNavigation" id="ancreSousNavigation"></a>
+            </div>
+
+            <div class="ColGauche colonne">        
+				
+				<!-- PlaceHolder: permet de masquer la navigation secondaire (defaut: s'affiche) -->
+				
+
+				<!-- PlaceHolder: permet d'ajouter du contenu sous la navigation secondaire (defaut: vide) -->			
+				
+	            
+			</div>  
+	        
+            <div class="ColCentre colonne Contenu">
+
+				<!-- PlaceHolder: permet d'afficher une accroche (defaut: vide) -->
+				
+	            			
+				<!-- PlaceHolder: conteneur pour tout le contenu excepte la navigation -->
+				
+	            				
+					<!-- PlaceHolder: permet de masquer les utilitaires d'Assemblee (defaut: s'affiche) -->
+					
+						
+
+<div class="utilitairesAssemblee" id="utilitairesAssemblee">
+    <div id="ColIconesUtilitairesAssemblee">
+        <div id="ColOutilsUtilitairesAssemblee">
+            <ul class="utilitairesAssemblee listeSansPuces">
+                <li>
+                    <a href="javascript:ImprimerBase()">
+			            <img alt="Imprimer la page" title="Imprimer la page" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageImprimante.gif" width="16" height="16"></a>
+                </li>
+                <li class="styleswitch">
+                    <a href="#Reguliere" rel="Reguliere" class="styleswitch Reguliere">
+                        <img alt="Taille du texte : régulière" title="Taille du texte : régulière" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/retrecir.gif" width="16" height="16"></a>
+                    <a href="#Grande" rel="Grande" title="Taille du texte : très grande" class="styleswitch Grande">
+                        <img alt="Taille du texte : très grande" title="Taille du texte : très grande" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/agrandir.gif" width="16" height="16"></a>
+                </li>
+                <li>
+                    <a href="http://www.assnat.qc.ca/fr/fils-rss.html" class="nePasRediriger">
+                        <img alt="Fils RSS" title="Fils RSS" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageRss.gif" width="16" height="16"></a>
+                </li>
+            </ul>
+        </div>
+  
+        <div id="ColPartageUtilitairesAssemblee">
+            <div class="boutonPartager">
+                <a href="#">Partager</a>
+            </div>
+            <ul class="utilitairesAssemblee listeSansPuces" style="z-index:999;">
+                <div class="fleche"></div>
+                <li>
+                    <a target="_blank" href="http://www.assnat.qc.ca/fr/envoyer-ami_TEMP.html?lienurl=%2ffr%2fpatrimoine%2fdatesessions.html" class="nePasRediriger">
+                        <img alt="Partager par courriel" title="Partager par courriel" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageCourriel.gif"></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.assnat.qc.ca%2ffr%2fpatrimoine%2fdatesessions.html" class="nePasRediriger">
+                        <img alt="Partager par Facebook" title="Partager par Facebook" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageFacebook.gif"></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://twitter.com/home?status=http://www.assnat.qc.ca%2ffr%2fpatrimoine%2fdatesessions.html" class="nePasRediriger">
+                        <img alt="Partager par Twitter" title="Partager par Twitter" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageTwitter.gif"></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.linkedin.com/cws/share?url=http://www.assnat.qc.ca%2ffr%2fpatrimoine%2fdatesessions.html" class="nePasRediriger">
+                        <img alt="Partager par LinkedIn" title="Partager par LinkedIn" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/partageLinkedin.gif"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="ColLiensUtilitairesAssemblee">
+        <ul class="listeIconesHorizontale listeIconesHorizontaleUtilitaires listeSansPuces">
+            <!-- Icone "Diagramme de l'Assemblée" -->
+		    
+			    <li class="icoDiagramme">
+                    <a href="http://www.assnat.qc.ca/fr/document/19787.html">Diagramme de l'Assemblée</a>
+                </li>
+		    
+
+            <li id="IndicateurEnDirectPage">
+                <span id="spnEnDirect" class="couleurTexteNormal">
+		            <span id="IconeEnDirect" class="icoEnDirectInactif"> </span>		
+		            En direct sur le Web
+	            </span>
+            </li>
+            <!-- Section "Vidéo et audio" -->
+            
+        </ul>
+    </div>
+</div>        
+					
+
+                    <!-- Ancre pour le "skiplink atteindreContenu" -->
+                    <div id="divAncreContenuPrincipal" class="skipLinks">
+                        <a name="ancreContenuPrincipal" id="ancreContenuPrincipal"></a>
+                    </div>
+
+                    <!-- Note sur les titres H1: dans ce gabarit, il y a 2 emplacements possibles pour le H1. Le cas
+						 le plus usuel est généré par défaut. Si necessaire, overrider dans la page ASPX -->
+			
+					<!-- PlaceHolder: permet d'afficher le titre sur les 2 colonnes. Cas plus rare. (default: vide) -->
+					
+
+					<!-- PlaceHolder: permet d'afficher le texte en dessus des colonnes -->
+					
+					
+					<div class="conteneurColonnesImbriquees">		
+                        <div class="colonneImbriquee imbGauche">
+
+							<!-- PlaceHolder: permet d'afficher le titre sur 1 colonne. Cas usuel. (default: s'affiche) -->
+							
+								
+
+<h1 class="">
+	<span id="ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu"><a href="#ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu_SkipLink"><img alt="Liens Ignorer la navigation" src="Les%20l%C3%A9gislatures%20et%20leurs%20sessions%20depuis%201867%20-%20Assembl%C3%A9e%20nationale%20du%20Qu%C3%A9bec_fichiers/WebResource.gif" style="border-width:0px;" width="0" height="0"></a><span>Les législatures et leurs sessions depuis 1867</span><a id="ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu_SkipLink"></a></span></h1>
+    
+    
+							
+
+							<!-- PlaceHolder: contenu principal de la page (defaut: vide) -->
+							
+							
+						</div>
+						
+						<div class="colonneImbriquee imbDroite">
+						
+							<!-- PlaceHolder: contenu secondaire de la page (defaut: vide) -->
+							
+						</div>
+
+					</div>
+
+					<!-- PlaceHolder: permet d'afficher du texte en dessous des colonnes -->
+					
+<div class="clear">&nbsp;</div>
+
+
+		<p class="textAligneJustifie">Le mot «&nbsp;législature&nbsp;» désigne d'abord le corps législatif institué par la <em>Loi constitutionnelle de 1867</em>
+ et composé, à l'origine, du lieutenant-gouverneur et de deux chambres, 
+le Conseil législatif dont les membres étaient nommés (aboli en 1968) et
+ l'Assemblée législative élue par la population (devenue l'Assemblée 
+nationale en 1968). Depuis l'adoption de la <em>Loi sur l'Assemblée nationale </em>en
+ 1982, on désigne officiellement ce corps législatif sous le nom de 
+«&nbsp;Parlement&nbsp;» tandis que le mot «&nbsp;législature&nbsp;» 
+s'emploie davantage, dans le langage courant, pour désigner l'espace de 
+temps qui sépare deux élections générales.</p>
+<p class="textAligneJustifie">En vertu de la <em>Loi constitutionnelle de 1867</em>,
+ l'Assemblée est élue pour une période maximale de cinq ans, mais elle 
+peut être dissoute avant, et la «&nbsp;législature&nbsp;» doit tenir au 
+moins une session par année, de manière à ce qu'il ne s'écoule pas plus 
+de 12 mois entre la dernière séance d'une session et la première séance 
+de la session suivante.</p>
+<p class="textAligneJustifie">Jusqu'au début des années 1980, les sessions ne duraient pas plus d'un an et on en comptait généralement quatre par législature.</p>
+<p class="textAligneJustifie">Le nombre de séances indiqué à la dernière
+ colonne est le nombre de jours où l'Assemblée a siégé. Il arrivait 
+autrefois que l'Assemblée tienne deux et même trois séances dans une 
+même journée, surtout à la fin de la session, afin d'accélérer les 
+travaux. Cette pratique est disparue au début des années 1960 et, 
+depuis, le nombre de séances correspond au nombre de jours de session.</p>
+<table class="tableauPourLayout tableauLegisSessionsDepuis1867" border="0">
+<colgroup span="1"><col class="col1" span="1"><col class="col2" span="1"><col class="col3" span="1"><col class="col4" span="1"><col class="col5" span="1"><col class="col6" span="1"></colgroup> 
+<tbody>
+<tr>
+<td class="filetHorizontal" colspan="6">
+<div class="hr espaceDessus espaceDessous">
+<hr>
+</div>
+</td>
+</tr>
+<tr>
+<th>Législature</th><th>Session</th><th>Ouverture</th><th>Prorogation</th><th>Dissolution</th><th>Nombre de séances par session (en&nbsp;jours)</th>
+</tr>
+<tr>
+<td class="filetHorizontal" colspan="6">
+<div class="hr espaceDessus espaceDessous">
+<hr>
+</div>
+</td>
+</tr>
+<tr>
+<td>1<sup>re</sup></td>
+<td>1<sup>re</sup></td>
+<td>27 décembre 1867</td>
+<td>24 février 1868</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">39</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>20 janvier 1869</td>
+<td>5 avril 1869</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">48</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>23 novembre 1869</td>
+<td>1<sup>er</sup> février 1870</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>3 novembre 1870</td>
+<td>24 décembre 1870</td>
+<td>27 mai 1871</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>2<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>7 novembre 1871</td>
+<td>23 décembre 1871</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>7 novembre 1872</td>
+<td>24 décembre 1872</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>4 décembre 1873</td>
+<td>28 janvier 1874</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">29</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>3 décembre 1874</td>
+<td>23 février 1875</td>
+<td>7 juin 1875</td>
+<td class="textAligneDroite">42</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>3<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>4 novembre 1875</td>
+<td>24 décembre 1875</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>10 novembre 1876</td>
+<td>28 décembre 1876</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>19 décembre 1877</td>
+<td>9 mars 1878</td>
+<td>22 mars 1878</td>
+<td class="textAligneDroite">42</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>4<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>4 juin 1878</td>
+<td>20 juillet 1878</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">36</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>19 juin 1879</td>
+<td>31 octobre 1879</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">57</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>28 mai 1880</td>
+<td>24 juillet 1880</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">39</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>28 avril 1881</td>
+<td>30 juin 1881</td>
+<td>7 novembre 1881</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>5<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>8 mars 1882</td>
+<td>27 mai 1882</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">53</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>18 janvier 1883</td>
+<td>30 mars 1883</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">52</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>27 mars 1884</td>
+<td>10 juin 1884</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">53</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>5 mars 1885</td>
+<td>9 mai 1885</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>8 avril 1886</td>
+<td>21 juin 1886</td>
+<td>9 septembre 1886</td>
+<td class="textAligneDroite">52</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>6<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>27 janvier 1887</td>
+<td>18 mai 1887</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">44</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>15 mai 1888</td>
+<td>12 juillet 1888</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">42</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>9 janvier 1889</td>
+<td>21 mars 1889</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">53</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>7 janvier 1890</td>
+<td>2 avril 1890</td>
+<td>9 mai 1890</td>
+<td class="textAligneDroite">60</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>7<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>4 novembre 1890</td>
+<td>30 décembre 1890</td>
+<td>22 décembre 1891</td>
+<td class="textAligneDroite">41</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>8<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>26 avril 1892</td>
+<td>24 juin 1892</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">43</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>12 janvier 1893</td>
+<td>27 février 1893</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>9 novembre 1893</td>
+<td>8 janvier 1894</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">44</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>20 novembre 1894</td>
+<td>12 janvier 1895</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>30 octobre 1895</td>
+<td>21 décembre 1895</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">39</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>6<sup>e</sup></td>
+<td>17 novembre 1896</td>
+<td>9 janvier 1897</td>
+<td>6 mars 1897</td>
+<td class="textAligneDroite">36</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>9<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>23 novembre 1897</td>
+<td>15 janvier 1898</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">37</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>12 janvier 1899</td>
+<td>10 mars 1899</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>18 janvier 1900</td>
+<td>23 mars 1900</td>
+<td>14 novembre 1900</td>
+<td class="textAligneDroite">49</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>10<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>14 février 1901</td>
+<td>28 mars 1901</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">32</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>13 février 1902</td>
+<td>26 mars 1902</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">30</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>26 février 1903</td>
+<td>25 avril 1903</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">40</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>22 mars 1904</td>
+<td>2 juin 1904</td>
+<td>4 novembre 1904</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>11<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>2 mars 1905</td>
+<td>20 mai 1905</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>18 janvier 1906</td>
+<td>9 mars 1906</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">36</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>15 janvier 1907</td>
+<td>14 mars 1907</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">43</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>3 mars 1908</td>
+<td>25 avril 1908</td>
+<td>6 mai 1908</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>12<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>2 mars 1909</td>
+<td>29 mai 1909</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">63</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>15 mars 1910</td>
+<td>4 juin 1910</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">52</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>10 janvier 1911</td>
+<td>24 mars 1911</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">52</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>9 janvier 1912</td>
+<td>3 avril 1912</td>
+<td>15 avril 1912</td>
+<td class="textAligneDroite">62</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>13<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>5 novembre 1912</td>
+<td>21 décembre 1912</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">34</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>11 novembre 1913</td>
+<td>19 février 1914</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">59</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>7 janvier 1915</td>
+<td>5 mars 1915</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">40</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>11 janvier 1916</td>
+<td>16 mars 1916</td>
+<td>14 avril 1916</td>
+<td class="textAligneDroite">48</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>14<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>7 novembre 1916</td>
+<td>22 décembre 1916</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">34</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>4 décembre 1917</td>
+<td>9 février 1918</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>21 janvier 1919</td>
+<td>17 mars 1919</td>
+<td>22 mai 1919</td>
+<td class="textAligneDroite">37</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>15<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>10 décembre 1919</td>
+<td>14 février 1920</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>11 janvier 1921</td>
+<td>19 mars 1921</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">42</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>10 janvier 1922</td>
+<td>21 mars 1922</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">48</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>24 octobre 1922</td>
+<td>29 décembre 1922</td>
+<td>10 janvier 1923</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>16<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>17 décembre 1923</td>
+<td>15 mars 1924</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">55</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>7 janvier 1925</td>
+<td>3 avril 1925</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">60</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>7 janvier 1926</td>
+<td>24 mars 1926</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">51</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>11 janvier 1927</td>
+<td>1<sup>er </sup>avril 1927</td>
+<td>19 avril 1927</td>
+<td class="textAligneDroite">55</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>17<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>10 janvier 1928</td>
+<td>22 mars 1928</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">44</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>8 janvier 1929</td>
+<td>4 avril 1929</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">55</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>7 janvier 1930</td>
+<td>4 avril 1930</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">55</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>2 décembre 1930</td>
+<td>4 avril 1931</td>
+<td>30 juillet 1931</td>
+<td class="textAligneDroite">61</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>18<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>3 novembre 1931</td>
+<td>19 février 1932</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">58</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>10 janvier 1933</td>
+<td>13 avril 1933</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">54</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>9 janvier 1934</td>
+<td>20 avril 1934</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">54</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>8 janvier 1935</td>
+<td>18 mai 1935</td>
+<td>30 octobre 1935</td>
+<td class="textAligneDroite">78</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>19<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>24 mars 1936</td>
+<td>&nbsp;</td>
+<td>11 juin 1936</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>20<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>7 octobre 1936</td>
+<td>12 novembre 1936</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">21</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>24 février 1937</td>
+<td>27 mai 1937</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">52</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>26 janvier 1938</td>
+<td>12 avril 1938</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">38</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>18 janvier 1939</td>
+<td>28 avril 1939</td>
+<td>23 septembre 1939</td>
+<td class="textAligneDroite">42</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>21<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>20 février 1940</td>
+<td>22 juin 1940</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">53</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>7 janvier 1941</td>
+<td>17 mai 1941</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">54</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>24 février 1942</td>
+<td>29 mai 1942</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">51</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>23 février 1943</td>
+<td>22 juin 1943</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">56</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>18 janvier 1944</td>
+<td>3 juin 1944</td>
+<td>29 juin 1944</td>
+<td class="textAligneDroite">67</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>22<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>7 février 1945</td>
+<td>1<sup>er</sup> juin 1945</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">65</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>13 février 1946</td>
+<td>17 avril 1946</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">36</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>12 février 1947</td>
+<td>10 mai 1947</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">50</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>14 janvier 1948</td>
+<td>1<sup>er</sup> avril 1948</td>
+<td>9 juin 1948</td>
+<td class="textAligneDroite">49</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>23<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>19 janvier 1949</td>
+<td>10 mars 1949</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">26</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>15 février 1950</td>
+<td>5 avril 1950</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">28</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>8 novembre 1950</td>
+<td>14 mars 1951</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">30</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>7 novembre 1951</td>
+<td>23 janvier 1952</td>
+<td>28 mai 1952</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>24<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>12 novembre 1952</td>
+<td>26 février 1953</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">50</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>18 novembre 1953</td>
+<td>5 mars 1954</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">49</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>17 novembre 1954</td>
+<td>22 février 1955</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">41</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>16 novembre 1955</td>
+<td>23 février 1956</td>
+<td>25 avril 1956</td>
+<td class="textAligneDroite">43</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>25<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>14 novembre 1956</td>
+<td>21 février 1957</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">34</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>13 novembre 1957</td>
+<td>21 février 1958</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">40</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>19 novembre 1958</td>
+<td>5 mars 1959</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">45</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>18 novembre 1959</td>
+<td>18 mars 1960</td>
+<td>27 avril 1960</td>
+<td class="textAligneDroite">65</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>26<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>20 septembre 1960</td>
+<td>22 septembre 1960</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">3</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>10 novembre 1960</td>
+<td>10 juin 1961</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">107</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>9 janvier 1962</td>
+<td>&nbsp;</td>
+<td>19 septembre 1962</td>
+<td class="textAligneDroite">93</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>27<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>15 janvier 1963</td>
+<td>11 juillet 1963</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">92</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>21 août 1963</td>
+<td>23 août 1963</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">3</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>14 janvier 1964</td>
+<td>31 juillet 1964</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">120</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>21 janvier 1965</td>
+<td>6 août 1965</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">94</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>22 octobre 1965</td>
+<td>22 octobre 1965</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">1</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>6<sup>e</sup></td>
+<td>25 janvier 1966</td>
+<td>&nbsp;</td>
+<td>18 avril 1966</td>
+<td class="textAligneDroite">35</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>28<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>1<sup>er</sup> décembre 1966</td>
+<td>12 août 1967</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">102</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>20 octobre 1967</td>
+<td>20 octobre 1967</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">1</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>20 février 1968</td>
+<td>18 décembre 1968</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">107</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>25 février 1969</td>
+<td>23 décembre 1969</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">111</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>24 février 1970</td>
+<td>&nbsp;</td>
+<td>12 mars 1970</td>
+<td class="textAligneDroite">10</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>29<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>9 juin 1970</td>
+<td>19 décembre 1970</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">47</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>23 février 1971</td>
+<td>24 décembre 1971</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">115</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>7 mars 1972</td>
+<td>14 mars 1973</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">109</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>15 mars 1973</td>
+<td>&nbsp;</td>
+<td>25 septembre 1973</td>
+<td class="textAligneDroite">55</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>30<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>22 novembre 1973</td>
+<td>22 décembre 1973</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">17</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>14 mars 1974</td>
+<td>28 décembre 1974</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">107</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>18 mars 1975</td>
+<td>19 décembre 1975</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">82</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>16 mars 1976</td>
+<td>&nbsp;</td>
+<td>18 octobre 1976</td>
+<td class="textAligneDroite">59</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>31<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>14 décembre 1976</td>
+<td>23 décembre 1976</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">8</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>8 mars 1977</td>
+<td>22 décembre 1977</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">138</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>21 février 1978</td>
+<td>20 février 1979</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">105</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>6 mars 1979</td>
+<td>18 juin 1980</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">115</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>24 octobre 1980</td>
+<td>24 octobre 1980</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">1</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>6<sup>e</sup></td>
+<td>5 novembre 1980</td>
+<td>&nbsp;</td>
+<td>12 mars 1981</td>
+<td class="textAligneDroite">29</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>32<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>19 mai 1981</td>
+<td>18 juin 1981</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">17</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>30 septembre 1981</td>
+<td>2 octobre 1981</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">3</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>9 novembre 1981</td>
+<td>10 mars 1983</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">110</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>4<sup>e</sup></td>
+<td>23 mars 1983</td>
+<td>20 juin 1984</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">111</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>5<sup>e</sup></td>
+<td>16 octobre 1984</td>
+<td>10 octobre 1985</td>
+<td>23 octobre 1985</td>
+<td class="textAligneDroite">80</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>33<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>16 décembre 1985</td>
+<td>8 mars 1988</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">160</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>8 mars 1988</td>
+<td>&nbsp;</td>
+<td>9 août 1989</td>
+<td class="textAligneDroite">134</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>34<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>28 novembre 1989</td>
+<td>18 mars 1992</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">185</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>19 mars 1992</td>
+<td>10 mars 1994</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">140</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>3<sup>e</sup></td>
+<td>17 mars 1994</td>
+<td>17 juin 1994</td>
+<td>24 juillet 1994</td>
+<td class="textAligneDroite">40</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>35<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>29 novembre 1994</td>
+<td>13 mars 1996</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">92</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>25 mars 1996</td>
+<td>21 octobre 1998</td>
+<td>28 octobre 1998</td>
+<td class="textAligneDroite">200</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>36<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>2 mars 1999</td>
+<td>9 mars 2001</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">157</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>22 mars 2001</td>
+<td>&nbsp;</td>
+<td>12 mars 2003&nbsp;</td>
+<td class="textAligneDroite">148</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>37<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>4 juin 2003</td>
+<td>10 mars 2006</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">200</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>14 mars 2006</td>
+<td>&nbsp;</td>
+<td>21 février 2007</td>
+<td class="textAligneDroite">74</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>38<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>8 mai 2007</td>
+<td>&nbsp;</td>
+<td>5 novembre 2008</td>
+<td class="textAligneDroite">110</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td class="textAligneDroite">&nbsp;</td>
+</tr>
+<tr>
+<td>39<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>13 janvier 2009</td>
+<td>&nbsp;22 février 2011</td>
+<td><br></td>
+<td class="textAligneDroite" style="text-align: right;">&nbsp;175</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>2<sup>e</sup></td>
+<td>23 février 2011</td>
+<td>&nbsp;</td>
+<td>1<sup>er</sup> août 2012&nbsp; <br></td>
+<td style="text-align: right;">&nbsp;123</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>40<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>30 octobre 2012</td>
+<td>&nbsp;</td>
+<td>5 mars 2014</td>
+<td style="TEXT-ALIGN: right">&nbsp;110</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>41<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>20 mai 2014</td>
+<td>&nbsp;</td>
+<td>23 août 2018&nbsp;</td>
+<td style="TEXT-ALIGN: right">&nbsp;353</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>42<sup>e</sup></td>
+<td>1<sup>re</sup></td>
+<td>27 novembre 2018</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p class="textAligneJustifie"><span>Source : Service de la recherche d'après les <em>Procès-verbaux</em> de l'Assemblée nationale, le <em>Journal des débats</em> (reconstitué pour 1867-1878 et 1893-1899) et le <em>Relevé des calendriers de l'Assemblée législative…</em>, par Michel Rhéaume, Section de l'indexation.</span></p>			
+	
+
+
+
+					<!-- PlaceHolder: contenu en complement de la page -->
+					
+						
+				
+					
+
+				
+			</div>
+	        
+	        <!-- N'est plus utilisee a cause des utilitaire d'assemblee qui doivent spanner col centre + col droite -->
+			<div class="ColDroite colonne"></div>        
+			
+			<div class="clear" id="ClearPiedPage"></div>
+	        
+			<!-- PiedDePage: affiche le contenu du pied de page -->
+			
+
+<div id="PiedDePage" class="PiedDePage">
+    <ul>
+        <li class="Premier">
+            <a href="http://www.assnat.qc.ca/fr/fils-rss.html" class="sanssouligne icoFilsRss">
+                <span class="styleHyperlien">Fils RSS</span>
+            </a>
+        </li>
+        
+        <li><a href="http://www.assnat.qc.ca/fr/liens-interet.html">Liens d'intérêt</a></li>
+        <li><a href="http://www.assnat.qc.ca/fr/aide/index.html">Aide</a></li>
+        <li><a href="http://www.assnat.qc.ca/fr/plan-site.html">Plan du site</a></li>
+        <li><a href="http://www.assnat.qc.ca/fr/lien/10214.html">Portail Québec</a></li>     
+        <li><a href="http://www.assnat.qc.ca/fr/propos-site/accessibilite.html">Accessibilité</a></li>
+    </ul><br>
+    <ul>
+        <li class="Premier">
+            <a href="http://www.assnat.qc.ca/fr/accueil/mediassociaux.html" class="sanssouligne icoMediasSociauxPied">
+                <span class="styleHyperlien">Suivez-nous</span>
+            </a>
+        </li>
+        <li><a href="http://www.assnat.qc.ca/fr/propos-site/index.html">À propos du site</a> </li>
+		<li><a href="http://www.assnat.qc.ca/fr/propos-site/droits-propriete-intellectuelle.html">© Assemblée nationale du Québec</a></li>
+		<li><a href="http://m.assnat.qc.ca/">Mobile</a></li>
+    </ul>
+    <br>
+    <span class="NonVisible">
+        
+            <ul>
+        
+                <li class="Premier">Date de la dernière modification : 17 juin 2009 </li>
+        
+            </ul>
+        
+    </span>
+</div>
+               
+
+<script type="text/javascript">
+    var isPiwikActiver = 'True';
+    var PiwikIdSite = '3';
+    if (isPiwikActiver == "True") {
+        var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stats.assnat.qc.ca/piwik/";
+        var _paq = _paq || [];
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+
+        (function () {
+            _paq.push(["setTrackerUrl", u + "piwik.php"]);
+            _paq.push(["setSiteId", PiwikIdSite]);
+            var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0]; g.type = "text/javascript";
+            g.defer = true; g.async = true; g.src = u + "piwik.js"; s.parentNode.insertBefore(g, s);
+        })();
+    }
+</script>   
+		</div>
+	</form>
+
+    
+	            				
+    
+
+
+
+<div class="infoBulle" id="infoBulle" style="display:none"><div class="fermerBulle"><a href="javascript:void(0);" id="tme">[x] Fermer</a></div><p>&nbsp;</p></div></body></html>

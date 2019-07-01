@@ -4,17 +4,6 @@ from sqlalchemy.orm import relationship
 from assnatouverte.database.base import Base
 
 
-class Role(Base):
-    __tablename__ = "roles"
-
-    id = Column('id', Integer, primary_key=True, autoincrement=True)
-    description = Column('description', String)
-    start_date = Column('start_date', Date)
-    end_date = Column('end_date', Date)
-    member_id = Column(String, ForeignKey('members.id'))
-    member = relationship('Member', back_populates='roles')
-
-
 class Member(Base):
     __tablename__ = "members"
 
@@ -24,4 +13,17 @@ class Member(Base):
     electoral_division = Column('electoral_division', String)
     political_affiliation = Column('political_affiliation', String)
     email = Column('email', String)
+
     roles = relationship('Role', back_populates='member')
+
+
+class Role(Base):
+    __tablename__ = "roles"
+
+    id = Column('id', Integer, primary_key=True, autoincrement=True)
+    description = Column('description', String)
+    start_date = Column('start_date', Date)
+    end_date = Column('end_date', Date)
+    member_id = Column(String, ForeignKey(Member.id))
+
+    member = relationship('Member', back_populates='roles')
