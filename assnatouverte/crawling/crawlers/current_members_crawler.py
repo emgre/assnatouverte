@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from assnatouverte.crawling.crawler import SingleSessionCrawler
 from assnatouverte.crawling.downloader.downloader import Downloader
+from assnatouverte.crawling.utils.string_utils import extract_member_id
 from assnatouverte.database.model.member import Member
 
 
@@ -24,10 +25,8 @@ class CurrentMembersCrawler(SingleSessionCrawler):
     def extract_single_member(row: SelectorList) -> Member:
         # Extract ID
         details_url = row.xpath('./td[1]/a/@href').get()
-        match = re.search(r'/([a-z0-9\-]+)/index.html', details_url)
-        if match:
-            member_id = match.group(1)
-        else:
+        member_id = extract_member_id(details_url)
+        if not member_id:
             raise Exception(f'Could not find member id in {details_url}')
 
         # Extract name

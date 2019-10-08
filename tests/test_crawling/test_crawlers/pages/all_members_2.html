@@ -1,0 +1,3109 @@
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+
+	<!-- Enonces d'inclusion de fichiers JS et CSS -->
+	
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="content-language" content="fr" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link type="text/css" href="/styles/ResetCSS.min.css" rel="stylesheet" media="screen"  />
+<link type="text/css" href="/styles/AssNat.min.css" rel="stylesheet" media="screen"  />
+<link type="text/css" href="/styles/Reguliere.css" title="Reguliere"  rel="alternate stylesheet" media="screen" />
+<link type="text/css" href="/styles/Moyenne.css" title="Moyenne" rel="alternate stylesheet" media="screen" />
+<link type="text/css" href="/styles/Grande.css" title="Grande" rel="alternate stylesheet" media="screen" />
+<link type="text/css" href="/styles/infoBulle.min.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="/styles/jScrollPane.min.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="/styles/jquery.treeview.min.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="/styles/jquery.skinned-select.min.css" rel="stylesheet" media="screen"  />
+<link type="text/css" href="/styles/jquery.datePicker.min.css" rel="stylesheet" media="screen"  />
+<link type="text/css" href="/styles/Calendrier.min.css" rel="stylesheet" media="screen"  />
+<link href="/Images/favicon.ico" rel="shortcut icon" />
+
+<!-- Feuilles de styles specifiques IE -->
+
+<!--[if lte IE 6]>
+    <link type="text/css" href="/styles/CorrectionsIE6.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+
+<!--[if IE 7]>
+    <link type="text/css" href="/styles/CorrectionsIE7.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+
+<!--[if IE 8]>
+    <link type="text/css" href="/styles/CorrectionsIE8.min.css" rel="stylesheet" media="screen"  />
+<![endif]-->
+<link type="text/css" href="/styles/Impression.min.css" rel="stylesheet" media="print"  />
+
+<link type="text/css" href="/styles/Tableau.min.css" rel="stylesheet" media="screen"  />
+
+<script type="text/javascript" src="/scripts/jquery.js?version=1.2.6"></script>
+
+<script type="text/javascript" src="/scripts/jquery-ui.js?version=1.5.2"></script>
+
+<script type="text/javascript"  >
+//<![CDATA[
+// Libellé du calendrier
+$.dpText = {
+	TEXT_PREV_YEAR		:	'Année précédente',
+	TEXT_PREV_MONTH		:	'Mois précédent',
+	TEXT_NEXT_YEAR		:	'Année suivante',
+	TEXT_NEXT_MONTH		:	'Mois suivant',
+	TEXT_CLOSE			:	'[x] Fermer',
+	TEXT_CHOOSE_DATE	:	'Choisir une date'
+}
+
+var _contenuLoading = '<img style="width: 16px;height: 16px;" src="/Images/lightbox/loading.gif" />&nbsp; Chargement en cours...';
+
+var _nbAnneeArchiveActivite = '3';
+// Voir Calendrier.js pour _dtSetStartDate
+var _dtSetEndDate = '2019-09-24';
+var intNombreAnneeArchiveActivite = 3;
+var langueCourante = 'fr';
+
+_initCalendrierTypeActiviteJSON = eval([{"NomTypeActivite":"Autres activités","Categorie":"D","Name":null,"Description":null},{"NomTypeActivite":"Conférences et points de presse","Categorie":"C","Name":null,"Description":null},{"NomTypeActivite":"Séances de l'Assemblée","Categorie":"A","Name":null,"Description":null},{"NomTypeActivite":"Séances des commissions","Categorie":"B","Name":null,"Description":null}]);name 
+_urlGetCalendrierDataJSON = '/WebMethod/Calendrier.aspx/GetCalendrier?langue=fr';
+_documentURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=Thumbnail&token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&MediaId=";
+_imageThumbnailURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=AlbumThumbnail&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_imageOriginaleURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_imageThumbnailDrapeauURL = "http://www.assnat.qc.ca/Media/Process.aspx?process=ThumbnailDrapeau&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=";
+_lienContenuURL = "/fr/deputes/index";
+_extensionPagesDuSite = "html";
+_lienPatronUrlCommuniquePresse = '/fr/actualites-salle-presse/communiques/';
+_lienPatronUrlTranscription = '/fr/actualites-salle-presse/conferences-points-presse/';
+_lienPatronUrlEnDirect = '/fr/video-audio/index';
+_lienJournalDebat ='/fr/travaux-parlementaires/{0}.html';
+_lienJournalDebatCom ='/fr/travaux-parlementaires/commissions/{0}/journal-debats/index';
+_lienJournalDebatChmbr ='/fr/travaux-parlementaires/{0}';
+_listeObjetMetierPatronUrl = "DocumentGenerique:/fr/document/{0}.html|Commission:/fr/travaux-parlementaires/commissions/{0}/index.html|Mandat:/fr/travaux-parlementaires/mandats/{0}/index.html|Lien:/fr/lien/{0}.html|CommuniquePresse:/fr/actualites-salle-presse/communiques/{0}.html|Actualite:/fr/actualites-salle-presse/nouvelle/{0}.html|ConferencePointPresse:/fr/actualites-salle-presse/conferences-points-presse/{0}.html|Consultation:/fr/travaux-parlementaires/consultations/{0}.html|SeanceAssemblee:/fr/travaux-parlementaires/assemblee-nationale/{0}/index.html|ProjetLoi:/fr/travaux-parlementaires/projets-loi/projet-loi-{0}.html|VideoAudio:/fr/video-audio/{0}.html|Journal:/fr/travaux-parlementaires/{0}.html|SyndicationRSS:/fr/rss/{0}.html|Petition:/fr/exprimez-votre-opinion/petition/{0}/index.html|TermeEncyclopedique:/fr/patrimoine/lexique/{0}.html|Depute:/fr/deputes/{0}/index.html|Texte:/fr/{0}.html|Individu:/fr/patrimoine/anciens-parlementaires/{0}.html|";
+_lienAideSoutienTechnique = '/fr/aide/aide-recherche.html#javascript';
+
+var _urlGetCalendrierObtenirActiviteEnOndes = '/WebMethod/Calendrier.aspx/ObtenirActiviteEnOndes';
+var intervalleRafraichissementWebDiffusion = '60';
+var urlPageVideoAudio = '/fr/video-audio/index.html?activite={0}';
+var libelleDateDebutDu = 'Du';
+var libelleDateDebutVers = 'Vers';
+var libelleDateFinJusqua = 'jusqu\'à';
+var libelleDateFinAu = 'au';
+var libelleHeureFinA = 'à'
+var libelleDebutApresPeriodeCourante = 'début : après la période des affaires courantes de l\'Assemblée';
+var bulleAidePeriodeAffaireCourante = '<span class="btnInfoBulle sansControle"><a href="javascript:void(0)" class="sanssouligne"><img src="http://www.assnat.qc.ca/Images/btnInfoBulle.gif" title="Afficher l\'aide" alt="Afficher l\'aide"></a><span title="Début : après la période des affaires courantes de l\'Assemblée"></span></span>';
+var libelleActiviteReporteeDateUlterieure = 'Activité reportée à une date ultérieure';
+
+var libelleCalAPartirDe = 'À partir de';
+var libelleCalEnCours = 'En cours';
+var libelleCalDebut = 'Début';
+
+var libelleDuree = 'Durée :';
+
+    var libelleAucunVideo = "La recherche n’a donné aucun résultat.";
+    var libelleAucuneAutreActiviteEnDirect = "Aucune autre activité en direct."
+
+var libelleNombreResultat = 'Nombre de résultats&nbsp;';
+var libelleMotsCles = 'Mots clés';
+var libelleCategorie = 'Catégorie';
+var libelleSession = 'Session';
+var libelleDateOuPeriode = 'Date ou période&nbsp;: ';
+var libelleAPartirDu = 'À partir du';
+var libelleJusquAu = "Jusqu'au";
+
+
+
+var arrCalendrierLblGeneral = {
+                                "lblCalOuvrir": "Ouvrir",
+                                "lblCalFermerEntete": "Fermer"       
+                            };
+var arrCalLblJoursSemaine = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'lblFormDeputesSortants'];
+var arrCalLblMoisAnnee = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+var arrCalLblMoisAnneeAbr = ['JA', 'FE', 'MR', 'AR', 'MA', 'JN', 'JL', 'AU', 'SE', 'OC', 'NO', 'DE'];
+var lblCalAucuneActivite = "Aucune activité au calendrier aujourd'hui.";
+var lblCalDifficulteTechnique = "Le calendrier n'est pas accessible en ce moment. Veuillez réessayer dans quelques minutes.";
+var lblCalActPrivee = "Activité privée"; 
+var lblCalActSurInvitation = "Sur invitation";
+var lblCalActAnnulee = "Activité annulée"; 
+var lblCalEnDirect = "En direct";
+var lblCalTranscription = "Transcription";
+var lblCalCommunique = "Communiqué";
+var lblCalToutesActivites = "Toutes les activités";
+var lblCalVideo = "Vidéo";
+var lblCalAudio = "Audio";
+
+// Libellés du date picker
+
+    Date.dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'lblFormDeputesSortants'];
+    Date.abbrDayNames = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
+    Date.monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    Date.abbrMonthNames = ['JA', 'FE', 'MR', 'AR', 'MA', 'JN', 'JL', 'AU', 'SE', 'OC', 'NO', 'DE'];
+	Date.firstDayOfWeek = 7;
+
+
+// Libellés pour treeview - overrider dans les pages au besoin
+var lblOuvrirTout = 'Afficher tout le contenu';
+var lblFermerTout = 'Masquer tout le contenu';
+
+// Libelles pour paginateur
+var _lblPaginationPage = 'Page';
+var _lblPaginationDe = 'de';
+
+// URL drapeau generique 
+var _urlDrapeauGenerique = '/Images/Temp/icoDrapeaux.gif'
+
+// Message pour sites externes
+var _messageSiteExterne = "L'Assemblée n'assume aucune responsabilité quant au contenu des sites externes.";
+var _arrDomainesInternes = ['172.16.48.120','172.16.48.199','localhost','app1dev.assnat.intranet','wwwdev.assnat.qc.ca','wwwdev2.assnat.qc.ca','wwwfon.assnat.qc.ca','wwwfon2.assnat.qc.ca','wwwfor.assnat.qc.ca','wwwacc.assnat.qc.ca','wwwacc2.assnat.qc.ca','www.assnat.qc.ca','www2.assnat.qc.ca','assnat.qc.ca','WWW.bibliotheque.assnat.qc.ca','fondationbonenfant.qc.ca','sd10sri10v','www.parlementsauprimaire.com','www.paricilademocratie.com','boutique.assnat.qc.ca'];
+
+// Pour visionneuse: libelle 'Image' utilise dans slimbox2.js
+var lblVisionneuseTermeImage = "Image {x} de {y}"; 
+
+// Libelle pour le bouton Fermer de la visionneuse
+var libelleCloseLink = "Fermer";
+
+// Libellés pour fermer les bulles d'aide
+var lblBulleAideFermer = "[x] Fermer";
+
+// URL pour la page de redirection javascript
+var urlPageRedirectionJS = '/fr/redirection.html?d=';
+
+var urlBoutonCalendrier = '/Images/btnCalendrier.gif';
+
+
+var urlObtenirVisionneusePhotos = '/Gabarits/InfrastructuresAvecVisionneuse.aspx/ObtenirVisionneusePhotos';
+var lblAlbumPhotos = 'Album de photos';
+var lblAgrandir = 'Agrandir';
+
+// Le script d'effet ne fonctionne pas sous Internet Explorer, ce script distingue ie des autres fureteurs 
+ if ($.browser.msie) {
+    }
+    else {
+        document.write("<script type='text\/javascript' src='\/scripts/jquery.easing.min.js?version=1.3'><\/script>")
+    }
+//]]>
+ 
+    var valEtatDeputeAncienDeputes = "AncienDeputes";
+
+    var urlObtenirTypeTravauxParSessionLegislature = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeTravauxParSessionLegislature';
+    var urlObtenirTypeTravauxParPeriode = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeTravauxParPeriode';
+    var urlObtenirTypeDocumentParTypeTravaux = '/Gabarits/RechercheAvancee.aspx/ObtenirTypeDocumentParTypeTravaux';
+    var urlObtenirSousCategorieVideoParCategorieVideo = '/Gabarits/RechercheAvancee.aspx/ObtenirSousCategorieVideoParCategorieVideo';
+    
+    var idsSectionRechercheTravauxParlementaires = ['9',
+                                                        '27',
+                                                        '29',
+                                                        '31',
+                                                        '33'];
+
+    var idCategorieDocumentJournauxDebats = '13'
+
+    var msgFormatDateInvalide = "Veuillez saisir une date valide selon le format aaaa-mm-jj.";
+    var msgPeriodeInvalide = "La date de début doit précéder la date de fin.";
+    var msgPeriodeDebutFutur = "La date doit être antérieure ou égale à la date du jour.";
+
+</script>
+
+<!-- Gestion des cookies. Documentation : http://stilbuero.de/jquery/cookie/ -->
+<script type="text/javascript" src="/scripts/jquery.cookie.min.js"></script>
+
+<!-- Corrige les problème de z-index d'Internet Explorer. Doc: http://brandonaaron.net/jquery/plugins/bgiframe/docs/ -->
+<script type="text/javascript" src="/scripts/jquery.bgiframe.min.js"></script>
+
+<!-- Permet la gestion de l'objet date. -->
+<script type="text/javascript" src="/scripts/date.min.js"></script>
+
+<!-- Génère des paneaux (Tabs) à partir d'une liste (ul li). info et doc: http://docs.jquery.com/UI/Tabs-->
+<script type="text/javascript" src="/scripts/ui.tabs.js"></script>
+
+<!-- Génère l'affichage dynamique d'un liste (ul li). info et doc: http://bassistance.de/jquery-plugins/jquery-plugin-treeview/ -->
+<script type="text/javascript" src="/scripts/jquery.treeview.pack.min.js"></script>
+
+<!-- Permet de modifier la feuille de style. info et doc:http://kelvinluck.com/article/switch-stylesheets-with-jquery -->
+<script type="text/javascript" src="/scripts/StyleSwitcher.min.js"></script>
+
+<!-- Permet de modifier l'apparence des selects. info et doc:http://www.lotsofcode.com/javascript-and-ajax/jquery-select-box-skin.htm -->
+<script type="text/javascript" src="/scripts/jquery.skinned-select.min.js"></script>
+
+<!-- Permet de créer des masques sur les formulaires info et doc:http://digitalbush.com/projects/masked-input-plugin/ -->
+<script type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.min.js"></script>
+
+<!-- Permet de générer un calendrier. docs et info : http://kelvinluck.com/assets/jquery/datePicker/v2/demo/datePickerLocalised.html -->
+<script type="text/javascript" src="/scripts/jquery.datePicker.js"></script>
+
+<!-- Permet de gérer les bulles d'aide en popup -->
+<script type="text/javascript" src="/scripts/BulleAide.min.js"></script>
+
+<!-- Permet de modifier l'apparence des scrollbars. info et doc: http://www.kelvinluck.com/assets/jquery/jScrollPane/jScrollPane.html -->
+<script type="text/javascript" src="/scripts/jScrollPane.min.js"></script>
+
+<!-- Permet d'utiliser des PNG transparent dans IE 6 et 5.5. info et doc: http://jquery.andreaseberhard.de/pngFix/ -->
+<script type="text/javascript" src="/scripts/jquery.pngFix.min.js"></script>
+
+<!-- Permet de trier et de paginer des tableaux. docs et info : http://tablesorter.com -->
+<script type="text/javascript" src="/scripts/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.tablesorter.pager.min.js"></script>
+
+<script type="text/javascript" src="/scripts/jquery.uilock.min.js"></script>
+
+<!-- script general -->
+<script type="text/javascript" src="/scripts/AssNat.min.js"></script>
+
+<script type="text/javascript" src="/Scripts/moment.min.js"></script>
+
+<!-- evenements et gestion du calendrier -->
+<script type="text/javascript" src="/scripts/Calendrier.min.js"></script>
+
+<!-- sert uniquement pour débugger les objets JSON. -->
+<script type="text/javascript" src="/scripts/json.min.js"></script>
+
+
+
+
+
+	
+	<!-- Placeholder: permet d'ajouter des enonces specifiques dans le HEAD -->
+    
+	<script type="text/javascript">
+	// Liens sans href doivent etre de couleur texte
+	$(document).ready
+	(
+		function() 
+		{	
+			$("div.FilAriane a[href='']").addClass("couleurTexteBase");
+		}
+	);
+	
+	</script>
+
+
+	<!-- Feuille de style pour le layout de la page -->
+	
+	<link href="/styles/GabPleineLargeur.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+
+	<!-- Placeholder: remplace automatiquement selon rubrique -->
+    <title>
+	
+		    Dictionnaire des parlementaires du Québec de 1764 à nos jours - Assemblée nationale du Québec
+		
+</title>
+        
+        <meta property="og:title" content="Dictionnaire des parlementaires du Québec de 1764 à nos jours - Assemblée nationale du Québec" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19205" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19207" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19209" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19211" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19213" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19215" />
+<meta property="og:image" content="http://www.assnat.qc.ca/Media/Process.aspx?process=Original&amp;token=ZyMoxNwUn8ikQ+TRKYwPCjWrKwg+vIv9rjij7p3xLGTZDmLVSmJLoqe/vG7/YWzz&amp;asset=ANQ.Vigie.Bll.Image_19217" />
+
+    </head>
+
+<!-- Placeholder: permet de specifier un tag body personnalise (default: <body>) -->
+
+	<body class="sectionStatique sectionStatiqueHistoire">
+
+
+    <form method="post" action="/fr/membres/notices/index-b.html" id="aspnetForm">
+<div>
+<input type="hidden" name="versionProgrammationEnCache" id="versionProgrammationEnCache" value="0" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQyNjkzNjYzOQ9kFgJmD2QWAgIDEGRkFgICAQ9kFgQCAQ9kFgJmD2QWAmYPFQIgL2VuL21lbWJyZXMvbm90aWNlcy9pbmRleC1iLmh0bWwHRW5nbGlzaGQCBA8WAh4EaHJlZgUnL2ZyL2FpZGUvYWlkZS1yZWNoZXJjaGUuaHRtbCNqYXZhc2NyaXB0ZGTHD58TCB38od0TvTWmcHRgpnlNXg==" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B6FCE570" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAOEicyx8DOZykTS1xmejqjb3hH/puXvwl4FGZa6rYP8j7zfnYlPDIamE8E+dcJv2yO9dOBQWParFAY5z7rUS7IBRBjceQ==" />
+</div>
+		<div id="Wrap">
+	    
+			<!-- Utilitaires: impression, agrandir texte, recherche, etc -->
+			
+
+
+<script type="text/javascript">
+    var motCleDefaut = 'Rechercher';
+</script>
+
+<a name="haut"></a>
+<div id="enteteUtilitaire">
+    <div id="skip" class="skiplinks">
+        <a href="#ancreContenuPrincipal">Atteindre le contenu</a>
+        <a href="#ancreSousNavigation">Atteindre la navigation secondaire</a>               
+    </div>
+    <div class="listeUtilitaires listeUtilitaires2">
+        <ul>
+            <li class="Premier">
+                <a class="sanssouligne nePasRediriger icoMobile" href="http://m.assnat.qc.ca">
+                    <span class="styleHyperlien">Mobile</span>
+                </a>
+            </li>
+            <li>
+                <a href="/fr/accueil/mediassociaux.html" class="sanssouligne icoMediasSociauxEntete">
+                    <span class="styleHyperlien">Suivez-nous</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="listeUtilitaires">
+        <ul>
+            
+            <li><a href="/en/membres/notices/index-b.html">English</a></li>
+            
+            <li><a href="/fr/nous-joindre.html" id="ctl00_Utilitaires_A1">Nous joindre</a></li>
+            <li>
+                <div class="outilRecherche">
+                    <label for="ctl00_Utilitaires_motCle" class="nepasafficher">Saisir un mot clé pour faire une recherche générale</label>
+                    <input type="text" id="ctl00_Utilitaires_motCle" class="outilRechercheMotCle" />
+                    <input onclick="RechercherMotCle();return false;" type="image" src="/Images/btnRecherche_of.gif" class="btnRechercheGlobal" title="Rechercher" alt="Rechercher"/>
+                </div>
+            </li>
+            <li>
+                <a href="/fr/aide/aide-recherche.html#javascript" onclick="LancerRechercheAvancee();return false;">Recherche avancée</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    function RechercherMotCle() {
+        var mot = $('#ctl00_Utilitaires_motCle');
+        if (mot.val() != "")
+        {
+            window.location = '/fr/recherche/recherche-avancee.html?SectionRecherche=-1&MotsCles=' + encodeURIComponent(htmlEscape(mot.val()));
+        }
+    }
+
+    function LancerRechercheAvancee() {
+        var urlRechercheAvancee = '/fr/recherche/recherche-avancee.html';
+        window.location = urlRechercheAvancee + "?EstNouvelleRecherche=true";
+    }
+
+
+    $(document).ready(
+
+		function() {
+		    // Masquer le bouton Envoyer a un ami dans certaines pages
+
+		    var Recherche = '';
+		    var EnvoyerAmi = '';
+
+		    if (Recherche + EnvoyerAmi != '')
+		        $("#EnvoyerAmi").addClass("cacherUnElement");
+		}
+	);				
+		
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	        
+			<!-- Banniere: image d'entete -->
+			
+<div id="Banniere">
+    <h1>Assemblée nationale du Québec - Retour à l'accueil</h1>
+	<a href="/fr/index.html" class="sanssouligne" title="Assemblée nationale du Québec - Retour à l&#39;accueil">
+    <img class="nepasafficher" width="88" height="58" title="Assemblée nationale du Québec - Retour à l'accueil" alt="Assemblée nationale du Québec - Retour à l'accueil" src='/images/transparent.gif' /></a>
+</div>
+        
+	        
+			<!-- NavigationPrincipale: menu horizontal -->
+			
+
+<div id="NavigationPrincipaleConteneur">
+    <div id="NavPrincipaleNiveau1">
+        <ul>
+            <li class="btnAccueil">
+                <a href="/fr/index.html" id="ctl00_NavigationPrincipale_hrfAcceuil">
+                    Accueil</a></li>
+            <li class='menuHoverParent btnDeputes'><a href="/fr/deputes/index.html" id="ctl00_NavigationPrincipale_hrfDeputes">
+                Députés</a>
+                <div class='menuHoverEnfant'>
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10006.html">Le président</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10002.html#listeDeputes">Liste des députés en fonction </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11861.html">Les députés depuis 1764</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10002.html#listeDeputes">Coordonnées des députés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10042.html">La fonction de député</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10014.html">Fonctions parlementaires des députés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10020.html">Composition des commissions</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10028.html">Membres du Bureau de l'Assemblée</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10052.html">Indemnités et allocations</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/deputes/cerclefemmes/index.html">Cercle des femmes parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12661.html">Cercle des jeunes parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10965.html">Amicale des anciens parlementaires du Québec</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12603.html">Fondation Jean-Charles-Bonenfant </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12605.html">Fondation des parlementaires québécois Cultures à partager </a></li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class='menuHoverParent btnTravaux'>
+                <a href="/fr/travaux-parlementaires/index.html" id="ctl00_NavigationPrincipale_hrfTravauxParlementaires">
+                    Travaux parlementaires</a>
+                <div class='menuHoverEnfant'>
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12119.html">Calendrier hebdomadaire des travaux</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12213.html">Journal des débats</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11867.html">Index du Journal des débats</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10114.html#procedure">Règlement et autres règles de procédure de l'Assemblée nationale</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10114.html#procedure">Propos non parlementaires</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10044.html">Assister aux travaux</a></li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10118.html">Travaux de l'Assemblée</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10118.html">Toutes les séances</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10198.html">Documents déposés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10192.html">Projets de loi</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12215.html">Cheminement des projets de loi</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Travaux des commissions</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Liste des commissions</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11185.html">Mandats en cours</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10198.html">Documents déposés</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10140.html">Rapports et documents de réflexion</a></li>
+</ul>
+</li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class='menuHoverParent btnExprimez'>
+                <a href="/fr/exprimez-votre-opinion/index.html" id="ctl00_NavigationPrincipale_hrfExprimezVotreOpinion">
+                    Exprimez votre opinion !</a>
+                <div class='menuHoverEnfant'>
+                    
+                            <ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10999.html">Pétitions</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11001.html">Signer une pétition électronique</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11003.html">Consulter une pétition présentée à l'Assemblée</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10108.html">Lancer une pétition</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/exprimez-votre-opinion/petition/cheminement-petition">Cheminement d'une pétition</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10901.html">Consultations publiques</a></strong> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10901.html#CommentParticiper">Comment participer à une consultation</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10126.html">Liste des consultations publiques</a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/10995.html">Participer à une consultation en ligne</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10997.html">Commenter un sujet à l'étude</a></strong></li>
+</ul>
+<ul>
+<li><strong><a href="http://www.assnat.qc.ca/fr/lien/10110.html">Présenter un projet de loi d'intérêt privé</a></strong></li>
+</ul>
+                        
+                </div>
+            </li>
+            <li class='menuHoverParent btnVideoAudio'>
+                <a href="/fr/video-audio/index.html" id="ctl00_NavigationPrincipale_hrfVideoAudio">
+                    Vidéo</a>
+                <div class='menuHoverEnfant'>
+                    
+                            <ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12541.html"><strong>En direct et webdiffusions à venir</strong></a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12543.html"><strong>Archives des travaux et activités parlementaires</strong></a> 
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12545.html">Travaux de l'Assemblée </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12559.html">Travaux des commissions</a> </li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12547.html">Activités de presse </a></li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12549.html">Activités spéciales et institutionnelles</a> </li>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12551.html">Députés </a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12553.html"><strong>Le Canal de l'Assemblée</strong></a> </li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12555.html"><strong>Émissions et capsules promotionnelles</strong></a></li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/12561.html"><strong>Espace jeunesse</strong></a> </li>
+</ul>
+<ul>
+<li><a href="http://www.assnat.qc.ca/fr/lien/11183.html"><strong>Commander un extrait</strong></a> </li>
+</ul>
+                        
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+	        
+            <!-- PlaceHolder: permet de masquer le calendrier sommaire (defaut: s'affiche) -->
+			
+				
+
+<script type="text/javascript">
+</script>
+
+<div class="calendrier calSommaire" id="Calendrier">
+    <div class="titreCalendrier" id="TitreCalendrier">
+        <ul>
+            <li class="btnCalendrier" id="btnCalendrier">
+                <a href="javascript:void(0)" id="ctl00_CalendrierSommaire_CalendrierSommaire1_LienCalendrier">
+                    Calendrier
+                    <p class="libelleOuvrirFermer">
+                    Ouvrir</p></a>
+            </li>
+        </ul>
+    </div>
+    <div class="contenuCalendrier" id="ContenuCalendrier">
+        <div class="contenuCalendrierInterne" style="display: none">
+            <div class="overlayCalendrier">
+                <p class="contenuOverlay">
+                    <img src="/Images/lightbox/loading.gif" alt="Chargement en cours"
+                        title="Chargement en cours" />
+                </p>
+            </div>
+            <div class="blocAssembleeEnDirect">
+                <ul class="listeIconesHorizontale">
+                    <li id="IconeEnDirectCalendrier" class="icoEnDirectInactif"><span id="spnEnDirectCalendrier">
+                        En direct</span></li>
+                    <li><a class="anchorCalendrierDetaille" href='/fr/calendrier-detaille.html'>
+                        Calendrier détaillé</a></li>
+                </ul>
+            </div>
+            <div class="blocNavigateurDates">
+                <div>
+                    <p id="ConteneurCalendrierPopup">
+                        <span class="calendrierPopup"></span>
+                    </p>
+                    <h2 id="TitreDateDuJour">_date_du_jour
+                    </h2>
+                </div>
+                <ul>
+                    <li class="versGauche"><a href="#" class="dateNavigateur fleche" id="dateNavGauche"><img alt="Semaine précédente" title="Semaine précédente"
+                        src='/Images/transparent.gif' width="15" height="25"/></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavDi" title="_dimanche" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">DIM</span><br />
+                        <span class="libelleDate">6</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavLu" title="_lundi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">LUN</span><br />
+                        <span class="libelleDate">7</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavMa" title="_mardi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">MAR</span><br />
+                        <span class="libelleDate">8</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavMe" title="_mercredi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">MER</span><br />
+                        <span class="libelleDate">9</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavJe" title="_jeudi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">JEU</span><br />
+                        <span class="libelleDate">10</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavVe" title="_vendredi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">VEN</span><br />
+                        <span class="libelleDate">11</span></a></li>
+                        
+                    <li><a class="dateNavigateur" id="dateNavSa" title="_samedi" href="#">
+                        <span class="overlayJour overlayJourSommaire"></span>
+                        <span class="libelleJournee">SAM</span><br />
+                        <span class="libelleDate">12</span></a></li>
+                        
+                    <li class="versDroite"><a href="#" class="dateNavigateur fleche" id="dateNavDroite">
+                        <img alt="Semaine suivante" title="Semaine suivante"
+                        src='/Images/transparent.gif' width="15" height="25"/></a></li>
+                </ul>
+                <span class="aujourdhui"><a class="aujourdhuiLien" href=''>
+                    Aujourd'hui</a></span>
+            </div>
+            <hr />
+            <div class="blocEnCours" style="display: none">
+                <div class="blocEnCoursTitre">
+                    <h3 id="HeureEnCours" class="heure">_heure_en_cours
+                    </h3>
+                    <h3>
+                        En cours</h3>
+                </div>
+                <div class="boiteDefilante">
+                </div>
+            </div>
+            <div class="blocActivitesDuJour">
+                <h3><label for="ctl00_CalendrierSommaire_CalendrierSommaire1_selectFiltreCategorieActivite">Activités du jour</label></h3>
+                <div class="my-skinnable-select">
+                    <select name="ctl00$CalendrierSommaire$CalendrierSommaire1$selectFiltreCategorieActivite" id="ctl00_CalendrierSommaire_CalendrierSommaire1_selectFiltreCategorieActivite" class="selectFiltreCategorieActivite">
+	<option selected="selected" value="*"></option>
+
+</select>
+                </div>
+                <div class="boiteDefilante">
+                </div>
+            </div>
+            <div class="blocExpositions" style="display: none">
+                <h3>
+                    Exposition(s)</h3>
+                <div id="listeExpositions">
+                </div>
+            </div>
+            <div class="blocSurLesTours" id="BlocSurLesTours" style="display: none">
+                <h3>
+                    Drapeau(x) sur l'hôtel du Parlement</h3>
+                <div id="listeDrapeaux">
+                </div>
+            </div>
+        </div>
+        <p id="calendrierNoJs">
+            L'utilisation du calendrier requiert que Javascript soit activé dans votre navigateur.<br />
+            <a href='/fr/aide/aide-recherche.html#javascript'>
+                Pour plus de renseignements</a>
+        </p>
+    </div>
+</div>
+
+			
+
+            <!-- NavigationPrincipaleNiveau2: menu horizontal -->
+			
+
+<div id="NavigationPrincipaleNiveau2Conteneur">
+    <div id="NavPrincipaleNiveau2">
+        <ul>
+            <li class='' id="lienABC"><a href="/fr/abc-assemblee/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfABCDeLassemblee">
+                L'ABC de l'Assemblée</a></li>
+            <li class='' id="lienVisiteurs"><a href="/fr/visiteurs/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfVisiteurs">
+                Visiteurs</a></li>
+            <li class='' id="lienActualites"><a href="/fr/actualites-salle-presse/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfActualiteEtSalleDePresse">
+                Actualités et salle de presse</a></li>
+            <li class='' id="lienBibliotheque">
+                <a href="/fr/bibliotheque/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfBibliotheque">
+                    Bibliothèque</a></li>
+            <li class='' id="lienPublications">
+                <a href="/fr/publications/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfPublications">
+                    Publications</a></li>
+            <li class='' id="lienEducatives">
+                <a href="http://www.paricilademocratie.com" id="ctl00_NavigationPrincipaleNiveau2_hrfActivitesEducatives">
+                    Éducation</a></li>
+            <li class='' id="lienInternational">
+                <a href="/fr/associations/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfInternational">
+                    Diplomatie</a></li>
+            <li class='' id="lienHistoire"><a href="/fr/patrimoine/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfHistoire">
+                Histoire</a></li>
+            <li class='' id="lienAmeliorationsInfrastructures"><a href="/fr/pavillon/index.html" id="ctl00_NavigationPrincipaleNiveau2_hrfAmeliorationsInfrastructures">
+                Nouveau pavillon d'accueil</a></li>
+        </ul>
+    </div>
+</div>
+
+
+			<!-- FilAriane: affiche le fil d'ariane -->			
+			
+				
+<div id="FilAriane" class="FilAriane">
+<span id="ctl00_FilAriane_FilAriane1_SiteMapPath1"><span><a href="/fr/index.html">Accueil</a></span><span> &gt; </span><span><a href="/fr/patrimoine/index.html">Histoire</a></span><span> &gt; </span><span>Dictionnaire des parlementaires du Qu&#233;bec de 1764 &#224; nos jours</span></span>
+</div>
+			
+	        
+            
+            
+
+            <!-- Ancre pour le "skiplink atteindreSousNavigation" -->
+            <div id="divAncreSousNavigation" class="skipLinks">
+                <a name="ancreSousNavigation" id="ancreSousNavigation"></a>
+            </div>
+
+            <div class="ColGauche colonne">        
+				
+				<!-- PlaceHolder: permet de masquer la navigation secondaire (defaut: s'affiche) -->
+				
+
+				<!-- PlaceHolder: permet d'ajouter du contenu sous la navigation secondaire (defaut: vide) -->			
+				
+	            
+			</div>  
+	        
+            <div class="ColCentre colonne Contenu">
+
+				<!-- PlaceHolder: permet d'afficher une accroche (defaut: vide) -->
+				
+	            			
+				<!-- PlaceHolder: conteneur pour tout le contenu excepte la navigation -->
+				
+	            				
+					<!-- PlaceHolder: permet de masquer les utilitaires d'Assemblee (defaut: s'affiche) -->
+					
+						
+
+<div class="utilitairesAssemblee" id="utilitairesAssemblee">
+    <div id="ColIconesUtilitairesAssemblee">
+        <div id="ColOutilsUtilitairesAssemblee">
+            <ul class="utilitairesAssemblee listeSansPuces">
+                <li>
+                    <a href="javascript:ImprimerBase()">
+			            <img alt="Imprimer la page" title="Imprimer la page"
+                        src='/Images/icones/partageImprimante.gif' width="16" height="16"/></a>
+                </li>
+                <li class="styleswitch">
+                    <a href="#Reguliere" rel="Reguliere" class="styleswitch Reguliere">
+                        <img alt="Taille du texte : régulière" title="Taille du texte : régulière" src='/Images/icones/retrecir.gif' width="16" height="16"/></a>
+                    <a href="#Grande" rel="Grande" title="Taille du texte : très grande" class="styleswitch Grande">
+                        <img alt="Taille du texte : très grande" title="Taille du texte : très grande" src='/Images/icones/agrandir.gif' width="16" height="16"/></a>
+                </li>
+                <li>
+                    <a href='/fr/fils-rss.html' class="nePasRediriger">
+                        <img alt="Fils RSS" title="Fils RSS"
+                        src='/Images/icones/partageRss.gif' width="16" height="16"/></a>
+                </li>
+            </ul>
+        </div>
+  
+        <div id="ColPartageUtilitairesAssemblee">
+            <div class="boutonPartager">
+                <a href="#">Partager</a>
+            </div>
+            <ul class="utilitairesAssemblee listeSansPuces" style="z-index:999;">
+                <div class="fleche"></div>
+                <li>
+                    <a target="_blank" href='/fr/envoyer-ami_TEMP.html?lienurl=%2ffr%2fmembres%2fnotices%2findex-b.html' class="nePasRediriger">
+                        <img alt="Partager par courriel" title="Partager par courriel"
+                        src='/Images/icones/partageCourriel.gif' /></a>
+                </li>
+                <li>
+                    <a target="_blank" href='http://www.facebook.com/sharer/sharer.php?u=http://www.assnat.qc.ca%2ffr%2fmembres%2fnotices%2findex-b.html' class="nePasRediriger">
+                        <img alt="Partager par Facebook" title="Partager par Facebook"
+                        src='/Images/icones/partageFacebook.gif' /></a>
+                </li>
+                <li>
+                    <a target="_blank" href='http://twitter.com/home?status=http://www.assnat.qc.ca%2ffr%2fmembres%2fnotices%2findex-b.html' class="nePasRediriger">
+                        <img alt="Partager par Twitter" title="Partager par Twitter"
+                        src='/Images/icones/partageTwitter.gif' /></a>
+                </li>
+                <li>
+                    <a target="_blank" href='http://www.linkedin.com/cws/share?url=http://www.assnat.qc.ca%2ffr%2fmembres%2fnotices%2findex-b.html' class="nePasRediriger">
+                        <img alt="Partager par LinkedIn" title="Partager par LinkedIn"
+                        src='/Images/icones/partageLinkedin.gif' /></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="ColLiensUtilitairesAssemblee">
+        <ul class="listeIconesHorizontale listeIconesHorizontaleUtilitaires listeSansPuces">
+            <!-- Icone "Diagramme de l'Assemblée" -->
+		    
+			    <li class="icoDiagramme">
+                    <a href="/fr/document/19787.html">Diagramme de l'Assemblée</a>
+                </li>
+		    
+
+            <li id="IndicateurEnDirectPage">
+                <span id="spnEnDirect" class="styleHyperlien">
+		            <span id="IconeEnDirect" class="icoEnDirect"> </span>		
+		            En direct sur le Web
+	            </span>
+            </li>
+            <!-- Section "Vidéo et audio" -->
+            
+        </ul>
+    </div>
+</div>        
+					
+
+                    <!-- Ancre pour le "skiplink atteindreContenu" -->
+                    <div id="divAncreContenuPrincipal" class="skipLinks">
+                        <a name="ancreContenuPrincipal" id="ancreContenuPrincipal"></a>
+                    </div>
+
+                    <!-- Note sur les titres H1: dans ce gabarit, il y a 2 emplacements possibles pour le H1. Le cas
+						 le plus usuel est généré par défaut. Si necessaire, overrider dans la page ASPX -->
+			
+					<!-- PlaceHolder: permet d'afficher le titre sur les 2 colonnes. Cas plus rare. (default: vide) -->
+					
+
+					<!-- PlaceHolder: permet d'afficher le texte en dessus des colonnes -->
+					
+					
+					<div class="conteneurColonnesImbriquees">		
+                        <div class="colonneImbriquee imbGauche">
+
+							<!-- PlaceHolder: permet d'afficher le titre sur 1 colonne. Cas usuel. (default: s'affiche) -->
+							
+								
+
+<h1 class="">
+	<span id="ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu"><a href="#ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu_SkipLink"><img alt="Liens Ignorer la navigation" src="/WebResource.axd?d=4UaBqSIWkbOa0oKpfyVaroCfWw-gKpH7p94XAneRMXaNy_TmToGBBciOgGFLRbyIG0lHcoUothuOjD7lW_eFebb023o1&amp;t=636934633200000000" width="0" height="0" style="border-width:0px;" /></a><span>Dictionnaire des parlementaires du Qu&#233;bec de 1764 &#224; nos jours</span><a id="ctl00_ColCentre_TitreSurUneColonne_TitrePrincipalContenu1_SiteMapPathTitreContenu_SkipLink"></a></span></h1>
+    
+    
+							
+
+							<!-- PlaceHolder: contenu principal de la page (defaut: vide) -->
+							
+
+	
+			<p>Depuis 1764, plus de 2&nbsp;500 personnes ont fait partie du Parlement à&nbsp;titre de députés, de conseillers législatifs ou de représentants de la Couronne (gouverneurs et lieutenants-gouverneurs).&nbsp;Le <em>Dictionnaire</em> comprend donc les membres du Conseil de Québec (1764-1775), du Conseil législatif (1775-1791), du Parlement du Bas-Canada (1792-1838), les représentants de l'ancien Bas-Canada au Parlement de la province du Canada (1841-1867) et les membres du Parlement de Québec depuis 1867. On y trouve aussi les membres du Conseil spécial qui a siégé de 1838 à 1841, entre la suspension de la constitution du Bas-Canada et l'entrée en vigueur de l'Acte d'Union.</p>
+<p class="MsoNormal" style="margin: 0in 0in 0pt;">Les notices sont mises à jour dès qu'une nouvelle information est connue et vérifiée (démission, décès, nouvel emploi). Il est à noter que les 125 parlementaires en fonction ont une biographie d'un style différent de ceux qui ne siègent plus.</p>			
+		
+		<div class="hr"><hr /></div><br />
+		
+	
+	
+	<p>[<a href="/fr/membres/notices/index.html">A</a>]
+	    [<a href="/fr/membres/notices/index-b.html">B</a>]
+	    [<a href="/fr/membres/notices/index-c.html">C</a>]
+	    [<a href="/fr/membres/notices/index-d.html">D</a>]
+	    [<a href="/fr/membres/notices/index-ef.html">E-F</a>]
+	    [<a href="/fr/membres/notices/index-g.html">G</a>]
+	    [<a href="/fr/membres/notices/index-hi.html">H-I</a>]
+	    [<a href="/fr/membres/notices/index-jk.html">J-K</a>]
+	    [<a href="/fr/membres/notices/index-l.html">L</a>]
+	    [<a href="/fr/membres/notices/index-m.html">M</a>]
+	    [<a href="/fr/membres/notices/index-no.html">N-O</a>]
+	    [<a href="/fr/membres/notices/index-p.html">P</a>]
+	    [<a href="/fr/membres/notices/index-qr.html">Q-R</a>]
+	    [<a href="/fr/membres/notices/index-s.html">S</a>]
+	    [<a href="/fr/membres/notices/index-tu.html">T-U</a>]
+	    [<a href="/fr/membres/notices/index-vz.html">V-Z</a>]
+	    </p>
+   
+	<div class="hr"><hr /></div>
+	
+	<h2>[B]</h2><div class="hr"><hr /></div>
+	
+	<div style="float:left;padding-right:20px;min-width:350px;">
+	    
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/baby-charles-francois-xavier-25.html">Baby,&nbsp;Charles-François-Xavier</a>
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/baby-francois-27.html">Baby,&nbsp;François</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baby-michel-guillaume-1799/index.html">Baby,&nbsp;Michel-Guillaume</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bachand-andre-17859/index.html">Bachand,&nbsp;André</a>&nbsp;(en fonction)
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bachand-claude-531/index.html">Bachand,&nbsp;Claude</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bachand-pierre-1801/index.html">Bachand,&nbsp;Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bachand-raymond-565/index.html">Bachand,&nbsp;Raymond</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bachand-robert-raoul-1803/index.html">Bachand,&nbsp;Robert-Raoul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bacon-guy-1805/index.html">Bacon,&nbsp;Guy</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bacon-lise-1807/index.html">Bacon,&nbsp;Lise</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/badeaux-joseph-1809/index.html">Badeaux,&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/badgley-francis-1811/index.html">Badgley,&nbsp;Francis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/badgley-william-1813/index.html">Badgley,&nbsp;William</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/bagot-charles-29.html">Bagot,&nbsp;Charles</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baillargeon-cyrille-1815/index.html">Baillargeon,&nbsp;Cyrille</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baillargeon-laurier-1817/index.html">Baillargeon,&nbsp;Laurier</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baker-angus-1819/index.html">Baker,&nbsp;Angus</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baker-george-barnard-1821/index.html">Baker,&nbsp;George Barnard</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baker-stevens-1823/index.html">Baker,&nbsp;Stevens</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baker-william-1825/index.html">Baker,&nbsp;William</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baldwin-ozro-1827/index.html">Baldwin,&nbsp;Ozro</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baldwin-robert-1829/index.html">Baldwin,&nbsp;Robert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/ball-george-1831/index.html">Ball,&nbsp;George</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barbeau-diane-1833/index.html">Barbeau,&nbsp;Diane</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barbier-louis-marie-raphael-1835/index.html">Barbier,&nbsp;Louis-Marie-Raphaël</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bardy-pierre-martial-1837/index.html">Bardy,&nbsp;Pierre-Martial</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/bareil-dit-lajoie-alexandre-31.html">Bareil, dit Lajoie,&nbsp;Alexandre</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bareil-dit-lajoie-alexis-1839/index.html">Bareil, dit Lajoie,&nbsp;Alexis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/baribeau-jean-louis-33.html">Baribeau,&nbsp;Jean-Louis</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baril-jacques-1841/index.html">Baril,&nbsp;Jacques</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baril-(l)-gilles-1843/index.html">Baril (L),&nbsp;Gilles</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baril-(pq)-gilles-1845/index.html">Baril (PQ),&nbsp;Gilles</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barnard-edward-1847/index.html">Barnard,&nbsp;Edward</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barnes-john-1849/index.html">Barnes,&nbsp;John</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barre-laurent-1851/index.html">Barré,&nbsp;Laurent</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barrette-antonio-1853/index.html">Barrette,&nbsp;Antonio</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barrette-gaetan-15397/index.html">Barrette,&nbsp;Gaétan</a>&nbsp;(en fonction)
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barrette-hermann-1855/index.html">Barrette,&nbsp;Hermann</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/barrette-jean-35.html">Barrette,&nbsp;Jean</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barriere-omer-1857/index.html">Barrière,&nbsp;Omer</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/barthe-joseph-guillaume-1859/index.html">Barthe,&nbsp;Joseph-Guillaume</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/basinet-louis-1861/index.html">Basinet,&nbsp;Louis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bastien-cleophas-1863/index.html">Bastien,&nbsp;Cléophas</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bastien-ludger-1865/index.html">Bastien,&nbsp;Ludger</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/baxter-james-1867/index.html">Baxter,&nbsp;James</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaubien-joseph-octave-1869/index.html">Beaubien,&nbsp;Joseph-Octave</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaubien-louis-1871/index.html">Beaubien,&nbsp;Louis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaubien-pierre-1873/index.html">Beaubien,&nbsp;Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beauchamp-benjamin-1875/index.html">Beauchamp,&nbsp;Benjamin</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beauchamp-joseph-1877/index.html">Beauchamp,&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beauchamp-line-663/index.html">Beauchamp,&nbsp;Line</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beauchesne-pierre-clovis-1879/index.html">Beauchesne,&nbsp;Pierre-Clovis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudet-elisee-1881/index.html">Beaudet,&nbsp;Élisée</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudet-godefroy-1883/index.html">Beaudet,&nbsp;Godefroy</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudet-regent-l-1885/index.html">Beaudet,&nbsp;Régent L.</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudin-andre-1887/index.html">Beaudin,&nbsp;André</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudoin-denise-727/index.html">Beaudoin,&nbsp;Denise</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudoin-jean-baptiste-1889/index.html">Beaudoin,&nbsp;Jean-Baptiste</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudoin-joseph-ambroise-eusebe-1891/index.html">Beaudoin,&nbsp;Joseph-Ambroise-Eusèbe</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudoin-louise-293/index.html">Beaudoin,&nbsp;Louise</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudreau-joseph-1893/index.html">Beaudreau,&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudry-adrien-1895/index.html">Beaudry,&nbsp;Adrien</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/beaudry-jean-louis-37.html">Beaudry,&nbsp;Jean-Louis</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudry-jean-paul-1897/index.html">Beaudry,&nbsp;Jean-Paul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaudry-rouville-1899/index.html">Beaudry,&nbsp;Rouville</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaulac-polydore-1901/index.html">Beaulac,&nbsp;Polydore</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaulieu-j-paul-1903/index.html">Beaulieu,&nbsp;J.-Paul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaulieu-joseph-alphonse-1905/index.html">Beaulieu,&nbsp;Joseph-Alphonse</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaulieu-mario-1907/index.html">Beaulieu,&nbsp;Mario</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaulne-francois-1909/index.html">Beaulne,&nbsp;François</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaumier-yves-1911/index.html">Beaumier,&nbsp;Yves</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaumont-louis-marie-joseph-1913/index.html">Beaumont,&nbsp;Louis-Marie-Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaupre-benjamin-1915/index.html">Beaupré,&nbsp;Benjamin</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaupre-henri-1917/index.html">Beaupré,&nbsp;Henri</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beaupre-pascal-5853/index.html">Beaupré,&nbsp;Pascal</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beauregard-jean-marie-1919/index.html">Beauregard,&nbsp;Jean-Marie</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beausejour-jacques-1921/index.html">Beauséjour,&nbsp;Jacques</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bechard-claude-887/index.html">Béchard,&nbsp;Claude</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-elzear-1923/index.html">Bédard,&nbsp;Elzéar</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-jean-baptiste-1925/index.html">Bédard,&nbsp;Jean-Baptiste</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-jean-jacques-1927/index.html">Bédard,&nbsp;Jean-Jacques</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-joseph-ephraim-1929/index.html">Bédard,&nbsp;Joseph-Éphraïm</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-joseph-hercule-1931/index.html">Bédard,&nbsp;Joseph-Hercule</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-joseph-isidore-1933/index.html">Bédard,&nbsp;Joseph-Isidore</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-marc-andre-1935/index.html">Bédard,&nbsp;Marc-André</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-marcel-1937/index.html">Bédard,&nbsp;Marcel</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-pierre-stanislas-1939/index.html">Bédard,&nbsp;Pierre-Stanislas</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-stephane-1457/index.html">Bédard,&nbsp;Stéphane</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-(richmond)-joseph-1941/index.html">Bédard (Richmond),&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bedard-(york)-joseph-1943/index.html">Bédard (York),&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/begin-charles-1945/index.html">Bégin,&nbsp;Charles</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/begin-joseph-damase-1947/index.html">Bégin,&nbsp;Joseph-Damase</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/begin-louise-1949/index.html">Bégin,&nbsp;Louise</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/begin-paul-1951/index.html">Bégin,&nbsp;Paul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beique-hortensius-1953/index.html">Béique,&nbsp;Hortensius</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beland-henri-severin-1955/index.html">Béland,&nbsp;Henri-Sévérin</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beland-jean-louis-1957/index.html">Béland,&nbsp;Jean-Louis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/beland-joseph-1959/index.html">Béland,&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-arthur-1961/index.html">Bélanger,&nbsp;Arthur</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-fabien-1963/index.html">Bélanger,&nbsp;Fabien</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-gilles-17925/index.html">Bélanger,&nbsp;Gilles</a>&nbsp;(en fonction)
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-guy-1965/index.html">Bélanger,&nbsp;Guy</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-jean-1967/index.html">Bélanger,&nbsp;Jean</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-joseph-gregoire-1969/index.html">Bélanger,&nbsp;Joseph-Grégoire</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-lucien-1971/index.html">Bélanger,&nbsp;Lucien</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-madeleine-1973/index.html">Bélanger,&nbsp;Madeleine</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-paul-eugene-1975/index.html">Bélanger,&nbsp;Paul-Eugène</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-pierre-1977/index.html">Bélanger,&nbsp;Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belanger-raynold-1979/index.html">Bélanger,&nbsp;Raynold</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belisle-jean-pierre-1981/index.html">Bélisle,&nbsp;Jean-Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bell-mathew-1983/index.html">Bell,&nbsp;Mathew</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/belleau-narcisse-fortunat-39.html">Belleau,&nbsp;Narcisse-Fortunat</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellemare-dionel-1985/index.html">Bellemare,&nbsp;Dionel</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellemare-gilles-1987/index.html">Bellemare,&nbsp;Gilles</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellemare-marc-5799/index.html">Bellemare,&nbsp;Marc</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellemare-maurice-1989/index.html">Bellemare,&nbsp;Maurice</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellerose-joseph-hyacinthe-1991/index.html">Bellerose,&nbsp;Joseph-Hyacinthe</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellet-francois-1993/index.html">Bellet,&nbsp;François</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bellingham-sydney-robert-1995/index.html">Bellingham,&nbsp;Sydney Robert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/belliveau-francis-edouard-1997/index.html">Belliveau,&nbsp;Francis-Édouard</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benjamin-francois-5849/index.html">Benjamin,&nbsp;François</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benjamin-frantz-17909/index.html">Benjamin,&nbsp;Frantz</a>&nbsp;(en fonction)
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benoit-hubert-5851/index.html">Benoit,&nbsp;Hubert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benoit-pierre-1999/index.html">Benoit,&nbsp;Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benoit-robert-2001/index.html">Benoit,&nbsp;Robert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/benoit-ernest-41.html">Benoît,&nbsp;Ernest</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/benoit-joseph-alderic-2003/index.html">Benoît,&nbsp;Joseph-Aldéric</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/berard-louis-philippe-43.html">Bérard,&nbsp;Louis-Philippe</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berard-marcel-2005/index.html">Bérard,&nbsp;Marcel</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bercovitch-peter-2007/index.html">Bercovitch,&nbsp;Peter</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-jean-guy-2009/index.html">Bergeron,&nbsp;Jean-Guy</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-jean-paul-2011/index.html">Bergeron,&nbsp;Jean-Paul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-joseph-arthur-2013/index.html">Bergeron,&nbsp;Joseph-Arthur</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-marc-2015/index.html">Bergeron,&nbsp;Marc</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-ovila-2017/index.html">Bergeron,&nbsp;Ovila</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergeron-stephane-1443/index.html">Bergeron,&nbsp;Stéphane</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergevin-achille-2019/index.html">Bergevin,&nbsp;Achille</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergevin-celestin-2021/index.html">Bergevin,&nbsp;Célestin</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bergman-lawrence-s-1419/index.html">Bergman,&nbsp;Lawrence&nbsp;S.</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernard-abraham-2023/index.html">Bernard,&nbsp;Abraham</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernard-cyrille-americ-2025/index.html">Bernard,&nbsp;Cyrille-Améric</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernard-daniel-13/index.html">Bernard,&nbsp;Daniel</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernard-ludger-pierre-2027/index.html">Bernard,&nbsp;Ludger-Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernard-robert-2029/index.html">Bernard,&nbsp;Robert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernatchez-nazaire-2031/index.html">Bernatchez,&nbsp;Nazaire</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernatchez-rene-2033/index.html">Bernatchez,&nbsp;René</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernier-alphonse-2035/index.html">Bernier,&nbsp;Alphonse</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernier-francois-2037/index.html">Bernier,&nbsp;François</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernier-jacques-2039/index.html">Bernier,&nbsp;Jacques</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bernier-raymond-1141/index.html">Bernier,&nbsp;Raymond</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berthelet-antoine-olivier-2041/index.html">Berthelet,&nbsp;Antoine-Olivier</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berthelot-amable-2043/index.html">Berthelot,&nbsp;Amable</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berthelot-dartigny-michel-amable-2045/index.html">Berthelot Dartigny,&nbsp;Michel-Amable</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berthiaume-paul-2047/index.html">Berthiaume,&nbsp;Paul</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            
+                <a href="/fr/patrimoine/anciens-parlementaires/berthiaume-treffle-45.html">Berthiaume,&nbsp;Trefflé</a>
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-charles-auguste-2049/index.html">Bertrand,&nbsp;Charles-Auguste</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-jean-francois-2051/index.html">Bertrand,&nbsp;Jean-François</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-jean-jacques-2053/index.html">Bertrand,&nbsp;Jean-Jacques</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-lionel-2055/index.html">Bertrand,&nbsp;Lionel</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-louis-2057/index.html">Bertrand,&nbsp;Louis</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-pierre-2059/index.html">Bertrand,&nbsp;Pierre</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-roger-2061/index.html">Bertrand,&nbsp;Roger</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-rosaire-2063/index.html">Bertrand,&nbsp;Rosaire</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bertrand-solime-2065/index.html">Bertrand,&nbsp;Solime</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berube-leo-2067/index.html">Bérubé,&nbsp;Léo</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berube-pascal-991/index.html">Bérubé,&nbsp;Pascal</a>&nbsp;(en fonction)
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/berube-yves-2069/index.html">Bérubé,&nbsp;Yves</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/besserer-louis-theodore-2071/index.html">Besserer,&nbsp;Louis-Théodore</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bessette-michel-adrien-2073/index.html">Bessette,&nbsp;Michel-Adrien</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bickerdike-robert-2075/index.html">Bickerdike,&nbsp;Robert</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bienvenue-jean-2077/index.html">Bienvenue,&nbsp;Jean</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bienvenue-valmore-2079/index.html">Bienvenue,&nbsp;Valmore</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/billette-stephane-1025/index.html">Billette,&nbsp;Stéphane</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/bilodeau-joseph-2081/index.html">Bilodeau,&nbsp;Joseph</a>
+                
+	        </div>
+	        
+	        
+	        <div>
+	            <a href="/fr/deputes/binette-gaston-2083/index.html">Binette,&nbsp;Gaston</a>
+                
+	        </div>
+	        
+	        
+	</div>
+	<div style="float:left;min-width:350px;">
+    	
+	<div>
+	    <a href="/fr/deputes/birnbaum-david-15371/index.html">Birnbaum,&nbsp;David</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/biron-henri-napoleon-2085/index.html">Biron,&nbsp;Henri-Napoléon</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/biron-rodrigue-2087/index.html">Biron,&nbsp;Rodrigue</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bisaillon-guy-2089/index.html">Bisaillon,&nbsp;Guy</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bisson-elie-hercule-2091/index.html">Bisson,&nbsp;Élie-Hercule</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnet-alfred-joseph-2093/index.html">Bissonnet,&nbsp;Alfred-Joseph</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnet-michel-2095/index.html">Bissonnet,&nbsp;Michel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnet-prosper-alfred-2097/index.html">Bissonnet,&nbsp;Prosper-Alfred</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnette-arcade-momer-2099/index.html">Bissonnette,&nbsp;Arcade-Momer</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnette-bernard-2101/index.html">Bissonnette,&nbsp;Bernard</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bissonnette-pierre-julien-leonidas-2103/index.html">Bissonnette,&nbsp;Pierre-Julien-Léonidas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/black-henry-2105/index.html">Black,&nbsp;Henry</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/black-john-2107/index.html">Black,&nbsp;John</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blackburn-gaston-2109/index.html">Blackburn,&nbsp;Gaston</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blackburn-james-2111/index.html">Blackburn,&nbsp;James</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blackburn-jeanne-l-2113/index.html">Blackburn,&nbsp;Jeanne L.</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blackburn-karl-5801/index.html">Blackburn,&nbsp;Karl</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blackwood-john-2115/index.html">Blackwood,&nbsp;John</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blain-alderic-2117/index.html">Blain,&nbsp;Aldéric</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-francois-15365/index.html">Blais,&nbsp;François</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-louis-2119/index.html">Blais,&nbsp;Louis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-louis-henri-2121/index.html">Blais,&nbsp;Louis-Henri</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-marguerite-1263/index.html">Blais,&nbsp;Marguerite</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-narcisse-2123/index.html">Blais,&nbsp;Narcisse</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-suzanne-17825/index.html">Blais,&nbsp;Suzanne</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blais-yves-2125/index.html">Blais,&nbsp;Yves</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/blaise-des-bergeres-de-rigauville-jean-baptiste-marie-939.html">Blaise des Bergères de Rigauville,&nbsp;Jean-Baptiste-Marie</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchard-etienne-2127/index.html">Blanchard,&nbsp;Étienne</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchard-joseph-leonard-2129/index.html">Blanchard,&nbsp;Joseph-Léonard</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-francois-2131/index.html">Blanchet,&nbsp;François</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-joseph-godric-2133/index.html">Blanchet,&nbsp;Joseph-Godric</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-manon-2135/index.html">Blanchet,&nbsp;Manon</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-yves-francois-1123/index.html">Blanchet,&nbsp;Yves-François</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-(beauce)-jean-2137/index.html">Blanchet (Beauce),&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchet-(quebec)-jean-2139/index.html">Blanchet (Québec),&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blanchette-luc-15413/index.html">Blanchette,&nbsp;Luc</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blank-harry-2141/index.html">Blank,&nbsp;Harry</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bleau-madeleine-2143/index.html">Bleau,&nbsp;Madeleine</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blouin-charles-2145/index.html">Blouin,&nbsp;Charles</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blouin-jean-cleophas-2147/index.html">Blouin,&nbsp;Jean-Cléophas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/blouin-rene-2149/index.html">Blouin,&nbsp;René</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bohemier-pierre-2151/index.html">Bohémier,&nbsp;Pierre</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boileau-rene-2153/index.html">Boileau,&nbsp;René</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bois-armand-2155/index.html">Bois,&nbsp;Armand</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boisclair-andre-2157/index.html">Boisclair,&nbsp;André</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boisseau-armand-2159/index.html">Boisseau,&nbsp;Armand</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boisseau-nicolas-gaspard-2161/index.html">Boisseau,&nbsp;Nicolas-Gaspard</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boissonnault-nicolas-2163/index.html">Boissonnault,&nbsp;Nicolas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boiteau-emile-2165/index.html">Boiteau,&nbsp;Émile</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boivin-roch-2167/index.html">Boivin,&nbsp;Roch</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bolduc-ghislain-12207/index.html">Bolduc,&nbsp;Ghislain</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bolduc-yves-297/index.html">Bolduc,&nbsp;Yves</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bondy-dit-douaire-joseph-2169/index.html">Bondy, dit Douaire,&nbsp;Joseph</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bonnardel-francois-11/index.html">Bonnardel,&nbsp;François</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bonnier-irenee-2171/index.html">Bonnier,&nbsp;Irénée</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bonvouloir-emile-2173/index.html">Bonvouloir,&nbsp;Émile</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bordeleau-bruno-2175/index.html">Bordeleau,&nbsp;Bruno</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bordeleau-jean-paul-2177/index.html">Bordeleau,&nbsp;Jean-Paul</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bordeleau-yvan-2179/index.html">Bordeleau,&nbsp;Yvan</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/borne-michel-2181/index.html">Borne,&nbsp;Michel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bosse-alfred-2183/index.html">Bossé,&nbsp;Alfred</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bosse-joseph-noel-47.html">Bossé,&nbsp;Joseph-Noël</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouc-charles-jean-baptiste-2185/index.html">Bouc,&nbsp;Charles-Jean-Baptiste</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouc-seraphin-2187/index.html">Bouc,&nbsp;Séraphin</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bouchard-alfred-albert-49.html">Bouchard,&nbsp;Alfred-Albert</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouchard-camil-93/index.html">Bouchard,&nbsp;Camil</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouchard-daniel-5805/index.html">Bouchard,&nbsp;Daniel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouchard-francois-xavier-2189/index.html">Bouchard,&nbsp;François-Xavier</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouchard-lucien-2191/index.html">Bouchard,&nbsp;Lucien</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouchard-telesphore-damien-2193/index.html">Bouchard,&nbsp;Télesphore-Damien</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-claude-2195/index.html">Boucher,&nbsp;Claude</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-emile-2197/index.html">Boucher,&nbsp;Émile</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-etienne-alexis-149/index.html">Boucher,&nbsp;Etienne-Alexis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-jean-15433/index.html">Boucher,&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-joseph-2199/index.html">Boucher,&nbsp;Joseph</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-jules-2201/index.html">Boucher,&nbsp;Jules</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-de-boucherville-charles-eugene-2203/index.html">Boucher de Boucherville,&nbsp;Charles-Eugène</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/boucher-de-boucherville-pierre-amable-51.html">Boucher de Boucherville,&nbsp;Pierre-Amable</a>
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/boucher-de-boucherville-rene-amable-53.html">Boucher de Boucherville,&nbsp;René-Amable</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-de-grosbois-tancrede-2205/index.html">Boucher de Grosbois,&nbsp;Tancrède</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/boucher-de-la-bruere-pierre-55.html">Boucher de la Bruère,&nbsp;Pierre</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-de-niverville-louis-charles-2207/index.html">Boucher de Niverville,&nbsp;Louis-Charles</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boucher-bacon-huguette-2209/index.html">Boucher-Bacon,&nbsp;Huguette</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boudreau-francis-2211/index.html">Boudreau,&nbsp;Francis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boudreau-jean-2213/index.html">Boudreau,&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boudreault-jean-2215/index.html">Boudreault,&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouffard-edouard-2217/index.html">Bouffard,&nbsp;Édouard</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouffard-jean-2219/index.html">Bouffard,&nbsp;Jean</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouille-marie-155/index.html">Bouillé,&nbsp;Marie</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boulais-francois-2221/index.html">Boulais,&nbsp;François</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/boulanger-joseph-57.html">Boulanger,&nbsp;Joseph</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boulerice-andre-2223/index.html">Boulerice,&nbsp;André</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boulet-jean-17899/index.html">Boulet,&nbsp;Jean</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boulet-julie-649/index.html">Boulet,&nbsp;Julie</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boulianne-marc-2225/index.html">Boulianne,&nbsp;Marc</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourassa-francois-2227/index.html">Bourassa,&nbsp;François</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourassa-henri-2229/index.html">Bourassa,&nbsp;Henri</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourassa-robert-2231/index.html">Bourassa,&nbsp;Robert</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourbeau-andre-2233/index.html">Bourbeau,&nbsp;André</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourbonnais-avila-gonzague-2235/index.html">Bourbonnais,&nbsp;Avila-Gonzague</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourcier-marc-16773/index.html">Bourcier,&nbsp;Marc</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourdages-louis-2237/index.html">Bourdages,&nbsp;Louis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourdages-remi-seraphin-2239/index.html">Bourdages,&nbsp;Rémi-Séraphin</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourdeau-alexandre-5803/index.html">Bourdeau,&nbsp;Alexandre</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourdon-michel-2241/index.html">Bourdon,&nbsp;Michel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourgeois-guy-15353/index.html">Bourgeois,&nbsp;Guy</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bourque-john-samuel-2243/index.html">Bourque,&nbsp;John Samuel</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bourret-joseph-59.html">Bourret,&nbsp;Joseph</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bousquet-denis-2245/index.html">Bousquet,&nbsp;Denis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bousquet-jacques-2247/index.html">Bousquet,&nbsp;Jacques</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouthillier-alexis-2249/index.html">Bouthillier,&nbsp;Alexis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bouthillier-flavien-guillaume-2251/index.html">Bouthillier,&nbsp;Flavien-Guillaume</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boutillier-thomas-2253/index.html">Boutillier,&nbsp;Thomas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boutin-jean-claude-2255/index.html">Boutin,&nbsp;Jean-Claude</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boutin-jean-hugues-2257/index.html">Boutin,&nbsp;Jean-Hugues</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boutin-pierre-2259/index.html">Boutin,&nbsp;Pierre</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bovey-wilfrid-61.html">Bovey,&nbsp;Wilfrid</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bowen-edward-2261/index.html">Bowen,&nbsp;Edward</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bowman-baxter-2263/index.html">Bowman,&nbsp;Baxter</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boyer-arthur-2265/index.html">Boyer,&nbsp;Arthur</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/boyer-auguste-2267/index.html">Boyer,&nbsp;Auguste</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bradet-daniel-2269/index.html">Bradet,&nbsp;Daniel</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/brais-francois-philippe-63.html">Brais,&nbsp;François-Philippe</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brassard-jacques-2271/index.html">Brassard,&nbsp;Jacques</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brassard-thomas-2273/index.html">Brassard,&nbsp;Thomas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bray-joseph-allan-2275/index.html">Bray,&nbsp;Joseph Allan</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brehaut-pierre-2277/index.html">Brehaut,&nbsp;Pierre</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bresse-guillaume-65.html">Bresse,&nbsp;Guillaume</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bresse-joseph-2279/index.html">Bresse,&nbsp;Joseph</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/breton-daniel-12225/index.html">Breton,&nbsp;Daniel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/breux-noel-2281/index.html">Breux,&nbsp;Noël</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brien-levis-2283/index.html">Brien,&nbsp;Lévis</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brigham-josiah-sandford-2285/index.html">Brigham,&nbsp;Josiah Sandford</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/brillant-jules-andre-67.html">Brillant,&nbsp;Jules-André</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brisson-aime-2287/index.html">Brisson,&nbsp;Aimé</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brochu-yvon-2289/index.html">Brochu,&nbsp;Yvon</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brodeur-bernard-2291/index.html">Brodeur,&nbsp;Bernard</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brodeur-louis-2293/index.html">Brodeur,&nbsp;Louis</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/brodeur-louis-philippe-69.html">Brodeur,&nbsp;Louis-Philippe</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brodeur-timothee-2295/index.html">Brodeur,&nbsp;Timothée</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/broet-theodore-louis-antoine-2297/index.html">Broët,&nbsp;Théodore-Louis-Antoine</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brooks-samuel-2299/index.html">Brooks,&nbsp;Samuel</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brouillet-raymond-2301/index.html">Brouillet,&nbsp;Raymond</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brouillette-pierre-a-2303/index.html">Brouillette,&nbsp;Pierre-A.</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brousseau-jean-baptiste-2305/index.html">Brousseau,&nbsp;Jean-Baptiste</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brousseau-jean-docile-2307/index.html">Brousseau,&nbsp;Jean-Docile</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brousseau-louis-philippe-2309/index.html">Brousseau,&nbsp;Louis-Philippe</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brown-glendon-pettes-2311/index.html">Brown,&nbsp;Glendon Pettes</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/browne-george-2313/index.html">Browne,&nbsp;George</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bruce-james-71.html">Bruce,&nbsp;James</a>
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bruneau-francois-pierre-73.html">Bruneau,&nbsp;François-Pierre</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bruneau-pierre-2315/index.html">Bruneau,&nbsp;Pierre</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/brunet-joseph-2317/index.html">Brunet,&nbsp;Joseph</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bryson-thomas-2319/index.html">Bryson,&nbsp;Thomas</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/bryson-(fils)-george-75.html">Bryson (fils),&nbsp;George</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bryson-(pere)-george-2321/index.html">Bryson (père),&nbsp;George</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bugeaud-joseph-fabien-2323/index.html">Bugeaud,&nbsp;Joseph-Fabien</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/buller-arthur-william-77.html">Buller,&nbsp;Arthur William</a>
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/buller-charles-79.html">Buller,&nbsp;Charles</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bulloch-william-ross-2325/index.html">Bulloch,&nbsp;William Ross</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bullock-charles-munson-2327/index.html">Bullock,&nbsp;Charles Munson</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bullock-william-stephen-2329/index.html">Bullock,&nbsp;William Stephen</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bureau-jacques-olivier-2331/index.html">Bureau,&nbsp;Jacques-Olivier</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bureau-pierre-2333/index.html">Bureau,&nbsp;Pierre</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bureau-blouin-leo-12175/index.html">Bureau-Blouin,&nbsp;Léo</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/burnet-david-2335/index.html">Burnet,&nbsp;David</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/burnet-peter-2337/index.html">Burnet,&nbsp;Peter</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/burns-robert-2339/index.html">Burns,&nbsp;Robert</a>
+        
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/burns-william-81.html">Burns,&nbsp;William</a>
+	</div>
+	
+	
+	<div>
+	    
+        <a href="/fr/patrimoine/anciens-parlementaires/burton-francis-nathaniel-83.html">Burton,&nbsp;Francis Nathaniel</a>
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/busby-thomas-2341/index.html">Busby,&nbsp;Thomas</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/busque-paul-16497/index.html">Busque,&nbsp;Paul</a>
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/bussiere-robert-17921/index.html">Bussière,&nbsp;Robert</a>&nbsp;(en fonction)
+        
+	</div>
+	
+	
+	<div>
+	    <a href="/fr/deputes/byrne-francis-2343/index.html">Byrne,&nbsp;Francis</a>
+        
+	</div>
+	
+	
+	</div>
+	<div style="clear:both;"></div>
+
+							
+						</div>
+						
+						<div class="colonneImbriquee imbDroite">
+						
+							<!-- PlaceHolder: contenu secondaire de la page (defaut: vide) -->
+							
+						</div>
+
+					</div>
+
+					<!-- PlaceHolder: permet d'afficher du texte en dessous des colonnes -->
+					
+
+					<!-- PlaceHolder: contenu en complement de la page -->
+					
+						
+				
+					
+
+				
+			</div>
+	        
+	        <!-- N'est plus utilisee a cause des utilitaire d'assemblee qui doivent spanner col centre + col droite -->
+			<div class="ColDroite colonne"></div>        
+			
+			<div class="clear" id="ClearPiedPage"></div>
+	        
+			<!-- PiedDePage: affiche le contenu du pied de page -->
+			
+
+<div id="PiedDePage" class="PiedDePage">
+    <ul>
+        <li class="Premier">
+            <a href="/fr/fils-rss.html" class="sanssouligne icoFilsRss">
+                <span class="styleHyperlien">Fils RSS</span>
+            </a>
+        </li>
+        
+        <li><a href="/fr/liens-interet.html">Liens d'intérêt</a></li>
+        <li><a href="/fr/aide/index.html">Aide</a></li>
+        <li><a href="/fr/plan-site.html">Plan du site</a></li>
+        <li><a href="/fr/lien/10214.html">Portail Québec</a></li>     
+        <li><a href="/fr/propos-site/accessibilite.html">Accessibilité</a></li>
+    </ul><br />
+    <ul>
+        <li class="Premier">
+            <a href="/fr/accueil/mediassociaux.html" class="sanssouligne icoMediasSociauxPied">
+                <span class="styleHyperlien">Suivez-nous</span>
+            </a>
+        </li>
+        <li><a href="/fr/propos-site/index.html">À propos du site</a> </li>
+		<li><a href="/fr/propos-site/droits-propriete-intellectuelle.html">© Assemblée nationale du Québec</a></li>
+		<li><a href="http://m.assnat.qc.ca">Mobile</a></li>
+    </ul>
+    <br />
+    <span class="NonVisible">
+        
+            <ul>
+        
+                <li class="Premier">Date de la dernière modification : 15 septembre 2009 </li>
+        
+            </ul>
+        
+    </span>
+</div>
+               
+
+<script type="text/javascript">
+    var isPiwikActiver = 'True';
+    var PiwikIdSite = '3';
+    if (isPiwikActiver == "True") {
+        var u = (("https:" == document.location.protocol) ? "https" : "http") + "://stats.assnat.qc.ca/piwik/";
+        var _paq = _paq || [];
+        _paq.push(["trackPageView"]);
+        _paq.push(["enableLinkTracking"]);
+
+        (function () {
+            _paq.push(["setTrackerUrl", u + "piwik.php"]);
+            _paq.push(["setSiteId", PiwikIdSite]);
+            var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0]; g.type = "text/javascript";
+            g.defer = true; g.async = true; g.src = u + "piwik.js"; s.parentNode.insertBefore(g, s);
+        })();
+    }
+</script>   
+		</div>
+	</form>
+
+    
+	            				
+    
+
+</body>
+</html>

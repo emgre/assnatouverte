@@ -10,6 +10,7 @@ class Member(Base):
     id = Column('id', String, primary_key=True)
     first_name = Column('first_name', String)
     last_name = Column('last_name', String)
+    name_details = Column('name_details', String)
     electoral_division = Column('electoral_division', String)
     political_affiliation = Column('political_affiliation', String)
     email = Column('email', String)
