@@ -13,6 +13,7 @@ class Database:
         Base.metadata.create_all(self._engine)
 
     def drop_tables(self):
-        meta = MetaData(bind=self._engine)
-        meta.reflect()
-        meta.drop_all()
+        meta = MetaData()
+        # Find all tables and delete them
+        meta.reflect(self._engine)
+        meta.drop_all(self._engine)

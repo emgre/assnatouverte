@@ -6,65 +6,63 @@
 # Installation
 
 You'll need:
-- [Python 3.7](https://www.python.org/)
-- [pipenv](https://pypi.org/project/pipenv/)
+- [Python 3.8+](https://www.python.org/)
+- [poetry](https://python-poetry.org/)
 
-Clone the repository then run `pipenv install`.
+Clone the repository then run `poetry install --with dev`.
 
 # Usage
 
-All the commands should be executed in the virtualenv created by pipenv.
-Simply type `pipenv shell` to activate the virtualenv. The commands should
-then be executed with `python -m assnatouverte [command]`.
+All the commands should be executed through poetry like so:
+`poetry run assnatouverte [command]`.
 
-To get usage details, run `python -m assnatouverte -h`.
+To get usage details, run `poetry run assnatouverte -h`.
 
 ## Database management
 
 The crawling data is stored in a [SQLite](https://www.sqlite.org/index.html) database.
-To create the database, run `python -m assnatouverte init_db`. It will create a file in
+To create the database, run `poetry run assnatouverte init_db`. It will create a file in
 the current working directory named `assnatouverte.sqlite` with the appropriate tables.
 
 On all commands, you can specify the database file with the `-db` parameter. It should
 appear **before** the command and should specify a complete SQLite URL as defined by
 SQLAlchemy (see [here](https://docs.sqlalchemy.org/en/13/core/engines.html#sqlite) for
-more details). Example: `python -m assnatouverte -db sqlite:///my_database.db init_db`.
+more details). Example: `poetry run assnatouverte -db sqlite:///my_database.db init_db`.
 
 By default, the `init_db` command won't delete any table or content. You can however
 ask the program to completely overwrite the database with the `-x` option. Example: 
-`python -m assnatouverte init_db -x`.
+`poetry run assnatouverte init_db -x`.
 
 ## Crawling
 
-To run a crawler, simply run `python -m assnatouverte crawl [...]` with a list of
+To run a crawler, simply run `poetry run assnatouverte crawl [...]` with a list of
 crawlers. The crawlers will be executed sequentially.
 
 # Quality
 
-For all the quality validation, be sure to install the develop dependencies with
-`pipenv install --dev`.
-
 ## Unit tests
 
-To run the unit test, run `python -m unittest`.
+To run the unit test, run `poetry run python -m unittest`.
 
 ## Coverage
 
-For coverage results, run `coverage run -m unittest`. To get a report, run
-`coverage report`.
+For coverage results, run `poetry run coverage run -m unittest`. To get a report, run
+`poetry run coverage report`.
 
 ## Linting
 
-To run the linter ([pylint](https://www.pylint.org/)), run `pylint assnatouverte tests`.
+To run the linter ([pylint](https://www.pylint.org/)), run
+`poetry run pylint assnatouverte tests`.
 
 ## Static typing
 
-To run the static type analyzer ([mypy](http://mypy-lang.org/)), run `mypy assnatouverte`.
+To run the static type analyzer ([mypy](http://mypy-lang.org/)), run
+`poetry run mypy assnatouverte`.
 
 # License
 
 assnatouverte
-Copyright (C) 2019  Émile Grégoire
+Copyright (C) 2019 - 2021 Émile Grégoire
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
