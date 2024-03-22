@@ -1,0 +1,29 @@
+name: Python Check
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: poetry
+      - name: Install dependencies
+        run: poetry install --with dev
+      - name: Unit Tests
+        run: poetry run coverage run -m unittest
+      - name: Gather coverage statistics
+        run: poetry run coverage xml
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+      - name: Linting
+        run: poetry run pylint assnatouverte tests
+      - name: Static type analysis
+        run: poetry run mypy assnatouverte
